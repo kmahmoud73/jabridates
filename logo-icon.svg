@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8D5A8"/>
+      <stop offset="50%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="goldGradVert" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8D5A8"/>
+      <stop offset="40%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="dateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#96751A"/>
+    </linearGradient>
+    <!-- Circular frame gradient -->
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8D5A8" stop-opacity="0.6"/>
+      <stop offset="50%" stop-color="#C8A96E" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#8B6914" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circular frame -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="url(#frameGrad)" stroke-width="1.5"/>
+  <circle cx="100" cy="100" r="86" fill="none" stroke="#C8A96E" stroke-width="0.4" opacity="0.25"/>
+
+  <!-- === PALM TREE ICON (centered, scaled up) === -->
+  <g transform="translate(100, 18) scale(1.2)">
+    <!-- Trunk — elegant tapered -->
+    <path d="M-3.5,125 C-2.5,98 -5,72 -2.5,48 C0,32 2.5,32 5,48 C7.5,72 5,98 6,125 C4,127.5 -1.5,127.5 -3.5,125 Z" fill="url(#trunkGrad)" opacity="0.9"/>
+    <!-- Trunk texture lines -->
+    <line x1="-2.5" y1="62" x2="5" y2="62" stroke="#8B6914" stroke-width="0.5" opacity="0.35"/>
+    <line x1="-2.5" y1="72" x2="5" y2="72" stroke="#8B6914" stroke-width="0.5" opacity="0.35"/>
+    <line x1="-2.5" y1="82" x2="5" y2="82" stroke="#8B6914" stroke-width="0.5" opacity="0.35"/>
+    <line x1="-2.5" y1="92" x2="5" y2="92" stroke="#8B6914" stroke-width="0.5" opacity="0.35"/>
+    <line x1="-2.5" y1="102" x2="5" y2="102" stroke="#8B6914" stroke-width="0.5" opacity="0.35"/>
+    <line x1="-2.5" y1="112" x2="5" y2="112" stroke="#8B6914" stroke-width="0.5" opacity="0.35"/>
+
+    <!-- Crown base -->
+    <ellipse cx="1.25" cy="46" rx="7" ry="4.5" fill="#C8A96E" opacity="0.5"/>
+
+    <!-- Palm fronds — flowing, organic curves -->
+    <!-- Center frond (up) -->
+    <path d="M1.25,44 C1.25,28 0,16 0,2" stroke="url(#goldGradVert)" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M0,2 C-5,6 -10,14 -8.5,22 C-6,17 -2.5,10 0,6 C2.5,10 6,17 8.5,22 C10,14 5,6 0,2 Z" fill="url(#goldGrad)" opacity="0.85"/>
+
+    <!-- Right frond 1 (main) -->
+    <path d="M4,44 C18,32 36,26 56,28" stroke="url(#goldGrad)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M56,28 C47,21 33,19 22,24 C31,25 42,24 52,26 C42,30 31,32 22,32 C33,35 47,32 56,28 Z" fill="url(#goldGrad)" opacity="0.75"/>
+    <!-- Leaflets -->
+    <path d="M14,38 C18,32 25,28 32,26" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.45"/>
+    <path d="M24,36 C28,30 34,27 40,26" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.45"/>
+    <path d="M34,34 C38,29 44,27 50,27" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.45"/>
+
+    <!-- Right frond 2 (drooping) -->
+    <path d="M5,46 C22,40 42,40 62,49" stroke="url(#goldGrad)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M62,49 C54,40 40,36 29,38 C38,40 49,40 58,45 C49,49 38,50 29,48 C40,52 54,52 62,49 Z" fill="url(#goldGrad)" opacity="0.65"/>
+
+    <!-- Right frond 3 (lower, more droop) -->
+    <path d="M4,48 C20,50 36,58 47,74" stroke="url(#goldGrad)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <path d="M47,74 C42,62 31,54 20,52 C29,54 38,58 44,66 C38,68 27,66 20,62 C29,70 40,76 47,74 Z" fill="url(#goldGrad)" opacity="0.55"/>
+
+    <!-- Left frond 1 (main) -->
+    <path d="M-1.5,44 C-15.5,32 -33.5,26 -53.5,28" stroke="url(#goldGrad)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M-53.5,28 C-44.5,21 -30.5,19 -19.5,24 C-28.5,25 -39.5,24 -49.5,26 C-39.5,30 -28.5,32 -19.5,32 C-30.5,35 -44.5,32 -53.5,28 Z" fill="url(#goldGrad)" opacity="0.75"/>
+    <!-- Leaflets -->
+    <path d="M-11.5,38 C-15.5,32 -22.5,28 -29.5,26" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.45"/>
+    <path d="M-21.5,36 C-25.5,30 -31.5,27 -37.5,26" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.45"/>
+    <path d="M-31.5,34 C-35.5,29 -41.5,27 -47.5,27" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.45"/>
+
+    <!-- Left frond 2 (drooping) -->
+    <path d="M-2.5,46 C-19.5,40 -39.5,40 -59.5,49" stroke="url(#goldGrad)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M-59.5,49 C-51.5,40 -37.5,36 -26.5,38 C-35.5,40 -46.5,40 -55.5,45 C-46.5,49 -35.5,50 -26.5,48 C-37.5,52 -51.5,52 -59.5,49 Z" fill="url(#goldGrad)" opacity="0.65"/>
+
+    <!-- Left frond 3 (lower, more droop) -->
+    <path d="M-1.5,48 C-17.5,50 -33.5,58 -44.5,74" stroke="url(#goldGrad)" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    <path d="M-44.5,74 C-39.5,62 -28.5,54 -17.5,52 C-26.5,54 -35.5,58 -41.5,66 C-35.5,68 -24.5,66 -17.5,62 C-26.5,70 -37.5,76 -44.5,74 Z" fill="url(#goldGrad)" opacity="0.55"/>
+
+    <!-- Date clusters hanging -->
+    <!-- Right cluster -->
+    <path d="M10,50 C14,58 16,65 14,72" stroke="#A08030" stroke-width="0.9" fill="none"/>
+    <ellipse cx="13" cy="74" rx="3" ry="4" fill="url(#dateGrad)"/>
+    <ellipse cx="17" cy="71" rx="2.6" ry="3.6" fill="url(#dateGrad)" opacity="0.85"/>
+    <ellipse cx="9.5" cy="72" rx="2.4" ry="3.4" fill="url(#dateGrad)" opacity="0.75"/>
+    <ellipse cx="14" cy="68" rx="2.2" ry="3.2" fill="url(#dateGrad)" opacity="0.7"/>
+
+    <!-- Left cluster -->
+    <path d="M-7.5,50 C-11.5,58 -13.5,65 -11.5,72" stroke="#A08030" stroke-width="0.9" fill="none"/>
+    <ellipse cx="-10.5" cy="74" rx="3" ry="4" fill="url(#dateGrad)"/>
+    <ellipse cx="-14.5" cy="71" rx="2.6" ry="3.6" fill="url(#dateGrad)" opacity="0.85"/>
+    <ellipse cx="-7" cy="72" rx="2.4" ry="3.4" fill="url(#dateGrad)" opacity="0.75"/>
+    <ellipse cx="-11.5" cy="68" rx="2.2" ry="3.2" fill="url(#dateGrad)" opacity="0.7"/>
+  </g>
+</svg>

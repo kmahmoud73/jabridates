@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Jabri for Dates | بيت جبري للتمور</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C8A96E;
+            --gold-hover: #D4B87E;
+            --gold-light: #E8D5A8;
+            --gold-dark: #8B6914;
+            --gold-glow: rgba(200,169,110,0.3);
+            --brown: #1a0f0a;
+            --brown-mid: #2C1810;
+            --brown-light: #3E2723;
+            --brown-card: #241610;
+            --cream: #FFF8F0;
+            --cream-dark: #F5E6D0;
+            --green: #2E7D32;
+            --green-light: #43A047;
+            --orange: #E65100;
+            --blue: #1565C0;
+            --red: #C62828;
+            --text: #F5E6D0;
+            --text-muted: #9C8B7A;
+            --white: #FFFFFF;
+            --border: rgba(200,169,110,0.15);
+            --shadow: 0 4px 30px rgba(0,0,0,0.3);
+            --shadow-lg: 0 12px 50px rgba(0,0,0,0.4);
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', 'Cairo', sans-serif;
+            background: var(--brown);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body[dir="rtl"] { font-family: 'Cairo', 'Amiri', sans-serif; }
+
+        /* ===== UTILITY ===== */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .ar { font-family: 'Cairo', 'Amiri', serif; }
+        .hidden { display: none !important; }
+
+        /* ===== LOADER ===== */
+        .loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--brown);
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; color: var(--gold);
+            animation: pulse 1.5s ease infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(26,15,10,0.9);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        nav.scrolled { background: rgba(26,15,10,0.98); box-shadow: 0 2px 30px rgba(0,0,0,0.5); }
+        .nav-inner {
+            max-width: 1400px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 72px;
+        }
+        .nav-brand {
+            display: flex; flex-direction: column; line-height: 1.2;
+            text-decoration: none;
+        }
+        .nav-brand-en {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem; font-weight: 700;
+            color: var(--gold);
+        }
+        .nav-brand-ar {
+            font-family: 'Cairo', serif;
+            font-size: 0.85rem; color: var(--gold-light);
+            direction: rtl;
+        }
+        .nav-links { display: flex; align-items: center; gap: 0.3rem; }
+        .nav-links a {
+            color: var(--cream-dark); text-decoration: none;
+            font-size: 0.82rem; font-weight: 500;
+            padding: 0.5rem 0.9rem; border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold); background: rgba(200,169,110,0.08); }
+        .lang-btn {
+            background: rgba(200,169,110,0.12);
+            border: 1px solid var(--border);
+            color: var(--gold); cursor: pointer;
+            padding: 0.4rem 1rem; border-radius: 8px;
+            font-size: 0.82rem; font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.2s; margin-left: 0.5rem;
+        }
+        .lang-btn:hover { background: rgba(200,169,110,0.2); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--gold); margin: 5px 0; transition: 0.3s; border-radius: 2px; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; overflow: hidden;
+            padding: 7rem 2rem 5rem;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(200,169,110,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(139,105,20,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(200,169,110,0.04) 0%, transparent 60%);
+        }
+        .hero-inner {
+            max-width: 1200px; margin: 0 auto; width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 4rem; align-items: center; position: relative; z-index: 2;
+        }
+        .hero-text { }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border: 1px solid var(--border);
+            background: rgba(200,169,110,0.08);
+            padding: 0.4rem 1.2rem; border-radius: 50px;
+            font-size: 0.8rem; color: var(--gold-light);
+            margin-bottom: 1.5rem; letter-spacing: 1px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800; line-height: 1.15;
+            color: var(--white); margin-bottom: 0.5rem;
+        }
+        .hero h1 .gold { color: var(--gold); }
+        .hero-ar-title {
+            font-family: 'Cairo', serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 700; color: var(--gold-light);
+            direction: rtl; margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        .hero p {
+            font-size: 1.05rem; color: var(--cream-dark);
+            max-width: 500px; margin-bottom: 2rem; opacity: 0.85;
+        }
+        .hero-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--brown); font-weight: 700;
+            padding: 0.9rem 2rem; border-radius: 12px;
+            text-decoration: none; font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(200,169,110,0.3);
+        }
+        .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,169,110,0.4); }
+
+        .hero-visual {
+            display: flex; flex-direction: column; gap: 1.5rem;
+        }
+        .hero-stats-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+        }
+        .hero-stat-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .hero-stat-card:hover { background: rgba(200,169,110,0.08); border-color: var(--gold); }
+        .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; font-weight: 700;
+            color: var(--gold);
+        }
+        .stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* ===== SECTION BASE ===== */
+        section { padding: 6rem 2rem; position: relative; }
+        .section-alt { background: var(--brown-mid); }
+        .section-gold {
+            background: linear-gradient(160deg, rgba(200,169,110,0.06) 0%, rgba(139,105,20,0.03) 100%);
+        }
+
+        .section-header { text-align: center; margin-bottom: 3.5rem; }
+        .section-tag {
+            display: inline-flex; align-items: center;
+            font-size: 0.75rem; font-weight: 600; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700; color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        .section-header .h2-ar {
+            font-family: 'Cairo', serif;
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            color: var(--gold-light); direction: rtl;
+            margin-bottom: 1rem;
+        }
+        .section-header p { font-size: 1rem; color: var(--text-muted); max-width: 650px; margin: 0 auto; }
+        .section-line {
+            width: 60px; height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            margin: 1.2rem auto 0; border-radius: 2px;
+        }
+
+        /* ===== GRIDS ===== */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+
+        /* ===== GLASS CARD ===== */
+        .glass {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .glass:hover { background: rgba(200,169,110,0.06); border-color: rgba(200,169,110,0.3); }
+        .glass h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem; color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+        .glass p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* ===== ABOUT ===== */
+        #about .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+        }
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .about-text .ar-sub {
+            font-family: 'Cairo', serif;
+            font-size: 1.1rem; color: var(--gold-light);
+            direction: rtl; margin-bottom: 1rem;
+        }
+        .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem; }
+        .about-features { display: flex; flex-direction: column; gap: 1rem; }
+        .about-feature {
+            display: flex; gap: 1rem; align-items: flex-start;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.2rem;
+        }
+        .about-feature-icon {
+            width: 44px; height: 44px; flex-shrink: 0;
+            background: rgba(200,169,110,0.1);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+        }
+        .about-feature h4 { font-size: 0.95rem; color: var(--white); font-weight: 600; }
+        .about-feature p { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* ===== PRODUCTS ===== */
+        .product-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden; transition: all 0.4s;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 40px rgba(200,169,110,0.15);
+        }
+        .product-img {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(139,105,20,0.12));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; position: relative;
+        }
+        .product-badge {
+            position: absolute; top: 12px; right: 12px;
+            font-size: 0.7rem; font-weight: 700;
+            padding: 0.3rem 0.8rem; border-radius: 20px;
+        }
+        .badge-premium { background: var(--gold); color: var(--brown); }
+        .badge-popular { background: var(--green); color: white; }
+        .badge-new { background: var(--orange); color: white; }
+        .product-info { padding: 1.5rem; }
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+        .product-info .product-ar {
+            font-family: 'Cairo', serif;
+            font-size: 0.9rem; color: var(--gold-light);
+            direction: rtl; margin-bottom: 0.5rem;
+        }
+        .product-info p { font-size: 0.82rem; color: var(--text-muted); }
+        .product-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; color: var(--gold);
+            margin-top: 0.8rem; font-weight: 700;
+        }
+
+        /* ===== MARKET STUDY ===== */
+        .market-bar-group { margin-bottom: 1.2rem; }
+        .market-bar-label {
+            display: flex; justify-content: space-between;
+            font-size: 0.82rem; color: var(--cream-dark);
+            margin-bottom: 0.4rem;
+        }
+        .market-bar {
+            height: 28px; background: rgba(200,169,110,0.1);
+            border-radius: 8px; overflow: hidden;
+        }
+        .market-bar-fill {
+            height: 100%; border-radius: 8px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+            display: flex; align-items: center;
+            padding-left: 10px;
+            font-size: 0.7rem; color: white; font-weight: 600;
+        }
+
+        .highlight-row {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .highlight-row:last-child { border-bottom: none; }
+        .highlight-icon { font-size: 1.5rem; flex-shrink: 0; }
+        .highlight-row h4 { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+        .highlight-row p { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* ===== MEGA STATS ===== */
+        .mega-stat {
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem 1rem;
+            transition: all 0.3s;
+        }
+        .mega-stat:hover { border-color: var(--gold); }
+        .mega-stat .val {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; font-weight: 700;
+            color: var(--gold);
+        }
+        .mega-stat .unit { font-size: 0.75rem; color: var(--gold-light); font-weight: 600; }
+        .mega-stat .desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* ===== TABLE ===== */
+        .table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: rgba(200,169,110,0.1); }
+        th {
+            padding: 0.9rem 1.2rem; font-size: 0.78rem;
+            font-weight: 600; color: var(--gold);
+            text-align: left; text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        td {
+            padding: 0.9rem 1.2rem; font-size: 0.88rem;
+            color: var(--cream-dark);
+            border-bottom: 1px solid var(--border);
+        }
+        tbody tr:hover { background: rgba(200,169,110,0.04); }
+        .tbadge {
+            display: inline-block; padding: 0.2rem 0.6rem;
+            border-radius: 6px; font-size: 0.72rem; font-weight: 700;
+        }
+        .tb-prem { background: rgba(200,169,110,0.2); color: var(--gold); }
+        .tb-pop { background: rgba(46,125,50,0.2); color: var(--green-light); }
+        .tb-val { background: rgba(21,101,192,0.2); color: #64B5F6; }
+
+        /* ===== JODA ===== */
+        #joda { background: linear-gradient(160deg, rgba(200,169,110,0.08) 0%, var(--brown) 100%); }
+        .joda-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .joda-benefit {
+            display: flex; gap: 0.8rem; align-items: flex-start;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .joda-benefit:last-child { border-bottom: none; }
+        .joda-bicon {
+            width: 36px; height: 36px; flex-shrink: 0;
+            background: rgba(200,169,110,0.1);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+        }
+        .joda-benefit strong { color: var(--white); font-size: 0.9rem; }
+        .joda-benefit p { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.1rem; }
+        .joda-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--gold); color: var(--brown);
+            font-weight: 700; font-size: 0.9rem;
+            padding: 0.7rem 1.5rem; border-radius: 10px;
+            text-decoration: none; margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        .joda-cta:hover { background: var(--gold-hover); transform: translateY(-2px); }
+
+        /* ===== FINANCIAL TIERS ===== */
+        .fin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .fin-card {
+            border-radius: 20px; overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        .fin-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .fin-head {
+            padding: 2rem; text-align: center;
+            background: rgba(200,169,110,0.06);
+            border-bottom: 1px solid var(--border);
+        }
+        .fin-head h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--gold); }
+        .fin-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem; font-weight: 700;
+            color: var(--white); margin: 0.5rem 0;
+        }
+        .fin-note { font-size: 0.78rem; color: var(--text-muted); }
+        .fin-body { padding: 1.5rem; }
+        .fin-row {
+            display: flex; justify-content: space-between;
+            padding: 0.5rem 0; font-size: 0.85rem;
+            border-bottom: 1px solid rgba(200,169,110,0.08);
+        }
+        .fin-row:last-child { border-bottom: none; }
+        .fin-row .fl { color: var(--text-muted); }
+        .fin-row .fr { color: var(--cream-dark); font-weight: 600; }
+        .fin-highlight {
+            background: rgba(200,169,110,0.08);
+            border-radius: 10px; padding: 0.8rem;
+            margin-top: 0.8rem; text-align: center;
+        }
+        .fin-highlight .fl { color: var(--gold); font-weight: 700; font-size: 0.85rem; }
+        .fin-highlight .fr { color: var(--gold); font-weight: 700; font-size: 1rem; }
+
+        /* ===== TIMELINE ===== */
+        .timeline { position: relative; padding: 1rem 0; }
+        .timeline::before {
+            content: ''; position: absolute;
+            left: 50%; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(180deg, var(--gold), var(--gold-dark), var(--gold));
+            transform: translateX(-50%);
+        }
+        .tl-item { display: flex; margin-bottom: 3rem; position: relative; }
+        .tl-item:nth-child(odd) { flex-direction: row; }
+        .tl-item:nth-child(even) { flex-direction: row-reverse; }
+        .tl-content {
+            width: 44%;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.8rem;
+        }
+        .tl-dot {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            width: 16px; height: 16px;
+            background: var(--gold); border-radius: 50%;
+            border: 3px solid var(--brown); z-index: 2;
+        }
+        .tl-tag {
+            display: inline-block; font-size: 0.7rem; font-weight: 700;
+            padding: 0.2rem 0.8rem; border-radius: 20px;
+            margin-bottom: 0.6rem; letter-spacing: 0.5px;
+        }
+        .tl-green { background: rgba(46,125,50,0.2); color: var(--green-light); }
+        .tl-orange { background: rgba(230,81,0,0.2); color: #FF9800; }
+        .tl-blue { background: rgba(21,101,192,0.2); color: #64B5F6; }
+        .tl-purple { background: rgba(123,31,162,0.2); color: #CE93D8; }
+        .tl-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; color: var(--white); margin-bottom: 0.6rem;
+        }
+        .tl-content ul { list-style: none; }
+        .tl-content ul li {
+            padding: 0.25rem 0 0.25rem 1rem; font-size: 0.82rem;
+            color: var(--text-muted); position: relative;
+        }
+        .tl-content ul li::before {
+            content: ''; position: absolute; left: 0; top: 0.55rem;
+            width: 5px; height: 5px; background: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* ===== SWOT ===== */
+        .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .swot-card { border-radius: var(--radius); padding: 2rem; }
+        .swot-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem; margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .swot-card ul { list-style: none; }
+        .swot-card ul li {
+            padding: 0.35rem 0 0.35rem 1rem; font-size: 0.85rem; position: relative;
+        }
+        .swot-card ul li::before {
+            content: ''; position: absolute; left: 0; top: 0.6rem;
+            width: 5px; height: 5px; border-radius: 50%;
+        }
+        .sw-s { background: rgba(46,125,50,0.08); border: 1px solid rgba(46,125,50,0.2); }
+        .sw-s h3 { color: var(--green-light); }
+        .sw-s ul li { color: var(--cream-dark); }
+        .sw-s ul li::before { background: var(--green-light); }
+        .sw-w { background: rgba(230,81,0,0.08); border: 1px solid rgba(230,81,0,0.2); }
+        .sw-w h3 { color: #FF9800; }
+        .sw-w ul li { color: var(--cream-dark); }
+        .sw-w ul li::before { background: #FF9800; }
+        .sw-o { background: rgba(21,101,192,0.08); border: 1px solid rgba(21,101,192,0.2); }
+        .sw-o h3 { color: #64B5F6; }
+        .sw-o ul li { color: var(--cream-dark); }
+        .sw-o ul li::before { background: #64B5F6; }
+        .sw-t { background: rgba(198,40,40,0.08); border: 1px solid rgba(198,40,40,0.2); }
+        .sw-t h3 { color: #EF5350; }
+        .sw-t ul li { color: var(--cream-dark); }
+        .sw-t ul li::before { background: #EF5350; }
+
+        /* ===== EXPANSION ===== */
+        .exp-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem;
+            transition: all 0.3s;
+        }
+        .exp-card:hover { border-color: var(--gold); }
+        .exp-card h3 { font-family:'Playfair Display',serif; color: var(--gold); font-size:1.1rem; margin-bottom:0.5rem; }
+        .exp-val { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--gold-light); margin:0.3rem 0; font-weight:700; }
+        .exp-card p { font-size:0.85rem; color:var(--text-muted); margin-bottom:0.4rem; }
+        .ftag {
+            display: inline-block;
+            background: rgba(200,169,110,0.12);
+            color: var(--gold-light);
+            padding: 0.2rem 0.6rem; border-radius: 16px;
+            font-size: 0.72rem; font-weight: 500; margin: 0.15rem;
+        }
+
+        /* ===== REGULATORY ===== */
+        .reg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .reg-card {
+            display: flex; gap: 1rem;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.5rem;
+            border-left: 3px solid var(--gold);
+        }
+        .reg-num {
+            width: 32px; height: 32px; flex-shrink: 0;
+            background: var(--gold); color: var(--brown);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.85rem;
+        }
+        .reg-card h4 { font-size: 0.95rem; color: var(--white); font-weight: 600; margin-bottom: 0.2rem; }
+        .reg-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+        /* ===== CONTACT FORM ===== */
+        #contact { background: linear-gradient(160deg, var(--brown-mid), var(--brown)); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+        .contact-info .ar-sub {
+            font-family: 'Cairo', serif;
+            font-size: 1.1rem; color: var(--gold-light);
+            direction: rtl; margin-bottom: 1.5rem;
+        }
+        .contact-info p { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1rem; }
+        .contact-detail {
+            display: flex; gap: 0.8rem; align-items: center;
+            padding: 0.7rem 0; color: var(--cream-dark);
+            font-size: 0.9rem;
+        }
+        .contact-detail span:first-child { font-size: 1.2rem; }
+
+        .contact-form {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem;
+        }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label {
+            display: block; font-size: 0.82rem;
+            color: var(--gold-light); font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%; padding: 0.8rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 10px; color: var(--cream-dark);
+            font-family: inherit; font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(200,169,110,0.06);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-submit {
+            width: 100%; padding: 0.9rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--brown); font-weight: 700; font-size: 0.95rem;
+            border: none; border-radius: 10px; cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        .form-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+        .form-success {
+            display: none; text-align: center; padding: 2rem;
+            color: var(--gold);
+        }
+        .form-success.show { display: block; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0d0805;
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem; text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; color: var(--gold);
+        }
+        .footer-brand-ar {
+            font-family: 'Cairo', serif;
+            font-size: 1rem; color: var(--gold-light);
+            direction: rtl; margin-bottom: 0.5rem;
+        }
+        footer p { font-size: 0.82rem; color: var(--text-muted); }
+        .footer-links { margin: 1rem 0; }
+        .footer-links a {
+            color: var(--gold-light); text-decoration: none;
+            font-size: 0.82rem; margin: 0 0.8rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-disc {
+            margin-top: 1.5rem; padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.72rem; color: var(--text-muted);
+            opacity: 0.6; max-width: 700px; margin-left: auto; margin-right: auto;
+        }
+        .footer-disc a { color: var(--gold-light); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-visual { order: -1; }
+            .hero-stats-grid { grid-template-columns: repeat(4, 1fr); }
+            .fin-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+            .grid-5 { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 72px; left: 0; right: 0;
+                background: rgba(26,15,10,0.98);
+                padding: 1rem; border-bottom: 1px solid var(--border);
+            }
+            .nav-toggle { display: block; }
+            .hero-stats-grid { grid-template-columns: 1fr 1fr; }
+            .grid-2, .grid-3, .joda-grid, .swot-grid, .reg-grid, .contact-grid, .about-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .grid-4, .grid-5 { grid-template-columns: 1fr 1fr; }
+            .timeline::before { left: 16px; }
+            .tl-item, .tl-item:nth-child(even) { flex-direction: row; }
+            .tl-content { width: calc(100% - 40px); margin-left: 36px; }
+            .tl-dot { left: 16px; }
+            .form-row { grid-template-columns: 1fr; }
+            section { padding: 4rem 1.2rem; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-up {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.vis { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+    <div>
+        <div class="loader-brand">House of Jabri for Dates</div>
+        <div style="text-align:center; font-family:'Cairo',serif; color:var(--gold-light); font-size:1rem; direction:rtl; margin-top:0.3rem;">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+    </div>
+</div>
+
+<!-- Nav -->
+<nav id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="nav-brand">
+            <span class="nav-brand-en">House of Jabri for Dates</span>
+            <span class="nav-brand-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</span>
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#market">Market</a>
+            <a href="#jordan">Jordan</a>
+            <a href="#joda">JODA</a>
+            <a href="#financial">Investment</a>
+            <a href="#phases">Roadmap</a>
+            <a href="#swot">SWOT</a>
+            <a href="#expansion">Expansion</a>
+            <a href="#contact">Contact</a>
+            <button class="lang-btn" id="langBtn" onclick="toggleLang()">&#1593;&#1585;&#1576;&#1610;</button>
+        </div>
+        <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <div class="hero-badge">PREMIUM JORDANIAN DATES</div>
+            <h1>The <span class="gold">House of Jabri</span> for Dates</h1>
+            <div class="hero-ar-title">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+            <p>Premium Medjool & Barhi dates from the Jordan Valley. Sourced directly, packaged with care, delivered with pride.</p>
+            <a href="#contact" class="hero-cta">Get in Touch &#8594;</a>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-stats-grid">
+                <div class="hero-stat-card">
+                    <div class="stat-value">$34.5B</div>
+                    <div class="stat-label">Global Market 2026</div>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="stat-value">36K</div>
+                    <div class="stat-label">Tons/Year Jordan</div>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="stat-value">6.14%</div>
+                    <div class="stat-label">Market CAGR</div>
+                </div>
+                <div class="hero-stat-card">
+                    <div class="stat-value">55</div>
+                    <div class="stat-label">Export Countries</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-alt">
+    <div class="container">
+        <div class="about-grid fade-up">
+            <div class="about-text">
+                <h3>About Us</h3>
+                <div class="ar-sub">&#1605;&#1606; &#1606;&#1581;&#1606;</div>
+                <p>The House of Jabri for Dates is a premium Jordanian dates company specializing in sourcing, packaging, and distributing the finest Medjool and Barhi dates from the Jordan Valley.</p>
+                <p>With direct supplier relationships and in-house packaging capabilities, we deliver exceptional quality at competitive prices. From luxury gift boxes to bulk wholesale, we serve the full spectrum of the dates market.</p>
+                <p style="color:var(--gold-light); font-style:italic;">"From the heart of the Jordan Valley to your table."</p>
+                <p class="ar" style="color:var(--gold-light); font-style:italic; direction:rtl; font-family:'Cairo',serif; margin-top:0.3rem;">"&#1605;&#1606; &#1602;&#1604;&#1576; &#1594;&#1608;&#1585; &#1575;&#1604;&#1571;&#1585;&#1583;&#1606; &#1573;&#1604;&#1609; &#1605;&#1575;&#1574;&#1583;&#1578;&#1603;&#1605;"</p>
+            </div>
+            <div class="about-features">
+                <div class="about-feature">
+                    <div class="about-feature-icon">&#128230;</div>
+                    <div>
+                        <h4>In-House Packaging</h4>
+                        <p>We manufacture our own cartons and packaging, giving us full control over quality, branding, and turnaround.</p>
+                    </div>
+                </div>
+                <div class="about-feature">
+                    <div class="about-feature-icon">&#129309;</div>
+                    <div>
+                        <h4>Direct from Farms</h4>
+                        <p>No middlemen. Direct supplier relationships with Jordan Valley farms for the freshest, highest-grade dates.</p>
+                    </div>
+                </div>
+                <div class="about-feature">
+                    <div class="about-feature-icon">&#127919;</div>
+                    <div>
+                        <h4>Premium Quality</h4>
+                        <p>Hand-sorted, graded, and packaged. Every date meets our exacting standards before it reaches you.</p>
+                    </div>
+                </div>
+                <div class="about-feature">
+                    <div class="about-feature-icon">&#127793;</div>
+                    <div>
+                        <h4>Jordan Valley Origin</h4>
+                        <p>The Jordan Valley's unique below-sea-level climate produces some of the world's finest Medjool dates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">OUR COLLECTION</div>
+            <h2>Our Products</h2>
+            <div class="h2-ar">&#1605;&#1606;&#1578;&#1580;&#1575;&#1578;&#1606;&#1575;</div>
+            <p>From premium whole dates to luxury gift boxes and value-added products.</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="grid-4 fade-up">
+            <div class="product-card">
+                <div class="product-img" style="font-size:3.5rem;">&#127796;
+                    <span class="product-badge badge-premium">PREMIUM</span>
+                </div>
+                <div class="product-info">
+                    <h3>Medjool Premium</h3>
+                    <div class="product-ar">&#1605;&#1580;&#1607;&#1608;&#1604; &#1601;&#1575;&#1582;&#1585;</div>
+                    <p>Hand-selected large Medjool dates. Soft, caramel-like sweetness. The king of dates.</p>
+                    <div class="product-price">JOD 8 - 15 /kg</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="font-size:3.5rem;">&#127796;
+                    <span class="product-badge badge-popular">POPULAR</span>
+                </div>
+                <div class="product-info">
+                    <h3>Barhi Fresh</h3>
+                    <div class="product-ar">&#1576;&#1585;&#1581;&#1610; &#1591;&#1575;&#1586;&#1580;</div>
+                    <p>Golden Barhi dates. Crunchy when fresh, honey-sweet when ripe. A Gulf favorite.</p>
+                    <div class="product-price">JOD 3 - 6 /kg</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="font-size:3.5rem;">&#127873;
+                    <span class="product-badge badge-new">GIFT</span>
+                </div>
+                <div class="product-info">
+                    <h3>Luxury Gift Box</h3>
+                    <div class="product-ar">&#1593;&#1604;&#1576;&#1577; &#1607;&#1583;&#1575;&#1610;&#1575; &#1601;&#1575;&#1582;&#1585;&#1577;</div>
+                    <p>Premium packaging. Medjool assortment. Perfect for Ramadan, Eid, weddings & corporate gifts.</p>
+                    <div class="product-price">JOD 15 - 45</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="font-size:3.5rem;">&#127851;
+                    <span class="product-badge badge-new">NEW</span>
+                </div>
+                <div class="product-info">
+                    <h3>Stuffed & Chocolate</h3>
+                    <div class="product-ar">&#1578;&#1605;&#1608;&#1585; &#1605;&#1581;&#1588;&#1610;&#1577; &#1608;&#1588;&#1608;&#1603;&#1608;&#1604;&#1575;&#1578;&#1577;</div>
+                    <p>Medjool stuffed with almonds, walnuts, or dipped in Belgian chocolate.</p>
+                    <div class="product-price">JOD 12 - 35</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MARKET OVERVIEW -->
+<section id="market" class="section-alt">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">01 &mdash; MARKET STUDY</div>
+            <h2>Global Dates Market</h2>
+            <div class="h2-ar">&#1587;&#1608;&#1602; &#1575;&#1604;&#1578;&#1605;&#1608;&#1585; &#1575;&#1604;&#1593;&#1575;&#1604;&#1605;&#1610;</div>
+            <p>Valued at $34.5B in 2026, projected to reach $55.6B by 2034. CAGR 6.14%.</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="grid-2 fade-up">
+            <div class="glass">
+                <h3>Market Size Projection (USD Billions)</h3>
+                <div class="market-bar-group"><div class="market-bar-label"><span>2024</span><span>$30.8B</span></div><div class="market-bar"><div class="market-bar-fill" style="width:55%"></div></div></div>
+                <div class="market-bar-group"><div class="market-bar-label"><span>2026</span><span>$34.5B</span></div><div class="market-bar"><div class="market-bar-fill" style="width:62%"></div></div></div>
+                <div class="market-bar-group"><div class="market-bar-label"><span>2029</span><span>$41.2B</span></div><div class="market-bar"><div class="market-bar-fill" style="width:74%"></div></div></div>
+                <div class="market-bar-group"><div class="market-bar-label"><span>2034</span><span>$55.6B</span></div><div class="market-bar"><div class="market-bar-fill" style="width:100%"></div></div></div>
+                <p style="font-size:0.72rem; color:var(--text-muted); margin-top:1rem;">Source: Fortune Business Insights | CAGR: 6.14%</p>
+            </div>
+            <div class="glass">
+                <h3>Key Market Drivers</h3>
+                <div class="highlight-row"><div class="highlight-icon">&#127758;</div><div><h4>MENA Dominance: 85% Share</h4><p>Middle East & Africa holds $27.9B of the global market. Home turf advantage.</p></div></div>
+                <div class="highlight-row"><div class="highlight-icon">&#128200;</div><div><h4>Health & Wellness Trend</h4><p>Dates as natural sugar alternative & superfood. Western markets growing fastest.</p></div></div>
+                <div class="highlight-row"><div class="highlight-icon">&#127796;</div><div><h4>Medjool Premium Surge</h4><p>3-5x price premium. Global production ~250K tons. Jordan = 14% of global Medjool.</p></div></div>
+                <div class="highlight-row"><div class="highlight-icon">&#128230;</div><div><h4>Packaging Innovation</h4><p>ME folding carton market: $5.24B (2024) to $9.16B (2033). Premium packaging drives margins.</p></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JORDAN DEEP DIVE -->
+<section id="jordan">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">02 &mdash; JORDAN DEEP DIVE</div>
+            <h2>Jordan's Dates Industry</h2>
+            <div class="h2-ar">&#1602;&#1591;&#1575;&#1593; &#1575;&#1604;&#1578;&#1605;&#1608;&#1585; &#1601;&#1610; &#1575;&#1604;&#1571;&#1585;&#1583;&#1606;</div>
+            <p>From 14,857 to 750,000+ trees in 15 years. A $500M+ sector with world-class Medjool quality.</p>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="grid-5 fade-up">
+            <div class="mega-stat"><div class="val">36K</div><div class="unit">Tons/Year</div><div class="desc">Annual Production</div></div>
+            <div class="mega-stat"><div class="val">$500M+</div><div class="unit">USD</div><div class="desc">Sector Investment</div></div>
+            <div class="mega-stat"><div class="val">65%</div><div class="unit">Exported</div><div class="desc">To 55 Countries</div></div>
+            <div class="mega-stat"><div class="val">10K</div><div class="unit">Jobs</div><div class="desc">40% Women</div></div>
+            <div class="mega-stat"><div class="val">$140M</div><div class="unit">USD/Year</div><div class="desc">Annual Sales</div></div>
+        </div>
+
+        <div class="table-wrap fade-up" style="margin-top:2.5rem;">
+            <table>
+                <thead><tr><th>Variety</th><th>Production</th><th>Price (JOD/kg)</th><th>Segment</th><th>Key Markets</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Medjool</strong></td><td>22,000 tons (63%)</td><td>5 - 15</td><td><span class="tbadge tb-prem">Premium</span></td><td>UAE, UK, France, EU, Turkey</td></tr>
+                    <tr><td><strong>Barhi</strong></td><td>8,000 tons (23%)</td><td>2 - 6</td><td><span class="tbadge tb-pop">Popular</span></td><td>Gulf States, Morocco, Local</td></tr>
+                    <tr><td><strong>Deglet Noor</strong></td><td>3,000 tons (8%)</td><td>1.5 - 4</td><td><span class="tbadge tb-val">Value</span></td><td>Local, Bulk</td></tr>
+                    <tr><td><strong>Other</strong></td><td>3,000 tons (6%)</td><td>1 - 3</td><td><span class="tbadge tb-val">Value</span></td><td>Local, Processing</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="grid-4 fade-up" style="margin-top:2.5rem;">
+            <div class="mega-stat" style="border-top:2px solid var(--green);">
+                <div class="val" style="color:var(--green-light);">60K</div><div class="desc">Tons Target 2030</div>
+            </div>
+            <div class="mega-stat" style="border-top:2px solid var(--green);">
+                <div class="val" style="color:var(--green-light);">30K</div><div class="desc">Export Target</div>
+            </div>
+            <div class="mega-stat" style="border-top:2px solid var(--green);">
+                <div class="val" style="color:var(--green-light);">$150M</div><div class="desc">Export Value</div>
+            </div>
+            <div class="mega-stat" style="border-top:2px solid var(--green);">
+                <div class="val" style="color:var(--green-light);">15K</div><div class="desc">Jobs Target</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JODA -->
+<section id="joda" class="section-alt">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">03 &mdash; JODA REGISTRATION</div>
+            <h2>Jordan Dates Association</h2>
+            <div class="h2-ar">&#1580;&#1605;&#1593;&#1610;&#1577; &#1575;&#1604;&#1578;&#1605;&#1608;&#1585; &#1575;&#1604;&#1571;&#1585;&#1583;&#1606;&#1610;&#1577;</div>
+            <p>Founded 2005. Represents all palm date growers in Jordan. Essential for market access.</p>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="joda-grid fade-up">
+            <div class="glass">
+                <h3>Why Register with JODA?</h3>
+                <div class="joda-benefit"><div class="joda-bicon">&#128209;</div><div><strong>Export Market Access</strong><p>Connections to buyers in 55+ countries. Trade mission facilitation.</p></div></div>
+                <div class="joda-benefit"><div class="joda-bicon">&#127891;</div><div><strong>Training & Technical Support</strong><p>Quality control, pest management, agricultural best practices.</p></div></div>
+                <div class="joda-benefit"><div class="joda-bicon">&#128200;</div><div><strong>Quality Standards</strong><p>International benchmarks. Certification assistance.</p></div></div>
+                <div class="joda-benefit"><div class="joda-bicon">&#129309;</div><div><strong>Industry Network</strong><p>750+ date farms, suppliers, logistics, and packaging companies.</p></div></div>
+                <div class="joda-benefit"><div class="joda-bicon">&#128227;</div><div><strong>Government Advocacy</strong><p>Lobbying for water rights, subsidies, and export barrier reduction.</p></div></div>
+                <div class="joda-benefit"><div class="joda-bicon">&#127760;</div><div><strong>International Expos</strong><p>Gulfood, SIAL, Anuga under "Jordan Dates" brand umbrella.</p></div></div>
+            </div>
+            <div class="glass">
+                <h3>Association Details</h3>
+                <p style="color:var(--cream-dark);"><strong style="color:var(--gold-light);">President:</strong> Anwar Haddad</p>
+                <p style="color:var(--cream-dark); margin-top:0.5rem;"><strong style="color:var(--gold-light);">Established:</strong> 2005</p>
+                <p style="color:var(--cream-dark); margin-top:0.5rem;"><strong style="color:var(--gold-light);">Members:</strong> All date growers & stakeholders</p>
+                <p style="color:var(--cream-dark); margin-top:1rem;"><strong style="color:var(--gold-light);">Mission:</strong> Represent and serve the palm dates sector by sustaining and enhancing quality per international standards and promoting in local and global markets.</p>
+
+                <h3 style="margin-top:2rem;">How to Register</h3>
+                <p style="color:var(--cream-dark);">1. Visit <strong>jodates.org</strong></p>
+                <p style="color:var(--cream-dark);">2. Submit membership application</p>
+                <p style="color:var(--cream-dark);">3. Pay annual membership fees</p>
+                <p style="color:var(--cream-dark);">4. Get onboarded with industry resources</p>
+                <a href="https://jodates.org" target="_blank" class="joda-cta">Visit JODA &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINANCIAL -->
+<section id="financial">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">04 &mdash; INVESTMENT</div>
+            <h2>Start Piano Piano</h2>
+            <div class="h2-ar">&#1575;&#1576;&#1583;&#1571; &#1582;&#1591;&#1608;&#1577; &#1582;&#1591;&#1608;&#1577;</div>
+            <p>Three phased tiers. Start micro, prove the concept, scale when ready.</p>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="fin-grid fade-up">
+            <div class="fin-card">
+                <div class="fin-head"><h3>Micro Start</h3><div class="fin-price">JOD 8-15K</div><div class="fin-note">~$11-21K USD | Months 1-6</div></div>
+                <div class="fin-body">
+                    <div class="fin-row"><span class="fl">JFDA Registration</span><span class="fr">500-1,200</span></div>
+                    <div class="fin-row"><span class="fl">Business License</span><span class="fr">500-800</span></div>
+                    <div class="fin-row"><span class="fl">JODA Membership</span><span class="fr">200-500</span></div>
+                    <div class="fin-row"><span class="fl">Raw Dates (2-3 tons)</span><span class="fr">2,000-4,000</span></div>
+                    <div class="fin-row"><span class="fl">Packaging Materials</span><span class="fr">1,000-2,000</span></div>
+                    <div class="fin-row"><span class="fl">Brand & Labels</span><span class="fr">500-1,000</span></div>
+                    <div class="fin-row"><span class="fl">Sorting Equipment</span><span class="fr">1,500-3,000</span></div>
+                    <div class="fin-row"><span class="fl">Cold Storage (shared)</span><span class="fr">300-500/mo</span></div>
+                    <div class="fin-row"><span class="fl">Marketing & Samples</span><span class="fr">500-1,000</span></div>
+                    <div class="fin-highlight"><span class="fl">Target Revenue (6mo)</span><span class="fr">JOD 15-25K</span></div>
+                </div>
+            </div>
+            <div class="fin-card">
+                <div class="fin-head"><h3>Growth Phase</h3><div class="fin-price">JOD 30-60K</div><div class="fin-note">~$42-85K USD | Months 6-18</div></div>
+                <div class="fin-body">
+                    <div class="fin-row"><span class="fl">Sorting & Grading Line</span><span class="fr">8,000-15,000</span></div>
+                    <div class="fin-row"><span class="fl">Vacuum Sealer</span><span class="fr">3,000-5,000</span></div>
+                    <div class="fin-row"><span class="fl">Cold Room Lease</span><span class="fr">6,000-10,000/yr</span></div>
+                    <div class="fin-row"><span class="fl">Raw Dates (10-20 tons)</span><span class="fr">8,000-16,000</span></div>
+                    <div class="fin-row"><span class="fl">2 Workers</span><span class="fr">6,000-9,000/yr</span></div>
+                    <div class="fin-row"><span class="fl">Delivery Van</span><span class="fr">5,000-10,000</span></div>
+                    <div class="fin-row"><span class="fl">Website & E-commerce</span><span class="fr">1,000-2,000</span></div>
+                    <div class="fin-row"><span class="fl">Export Certs</span><span class="fr">1,500-3,000</span></div>
+                    <div class="fin-highlight"><span class="fl">Target Revenue (Yr 1-2)</span><span class="fr">JOD 80-150K</span></div>
+                </div>
+            </div>
+            <div class="fin-card">
+                <div class="fin-head"><h3>Scale Phase</h3><div class="fin-price">JOD 100-200K</div><div class="fin-note">~$141-282K USD | Year 2-3+</div></div>
+                <div class="fin-body">
+                    <div class="fin-row"><span class="fl">Full Facility</span><span class="fr">30,000-50,000</span></div>
+                    <div class="fin-row"><span class="fl">Automated Sorting</span><span class="fr">20,000-40,000</span></div>
+                    <div class="fin-row"><span class="fl">Industrial Cold Storage</span><span class="fr">15,000-25,000</span></div>
+                    <div class="fin-row"><span class="fl">Raw Dates (50-100 tons)</span><span class="fr">30,000-60,000</span></div>
+                    <div class="fin-row"><span class="fl">Full Team (5-8)</span><span class="fr">25,000-40,000/yr</span></div>
+                    <div class="fin-row"><span class="fl">Export Logistics</span><span class="fr">10,000-20,000</span></div>
+                    <div class="fin-row"><span class="fl">Trade Shows</span><span class="fr">5,000-10,000</span></div>
+                    <div class="fin-highlight"><span class="fl">Target Revenue (Yr 2-3)</span><span class="fr">JOD 300-500K+</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-3 fade-up" style="margin-top:2.5rem;">
+            <div class="mega-stat" style="border-top:2px solid var(--gold);"><div class="val">40-60%</div><div class="desc">Gross Margin (Premium Medjool)</div></div>
+            <div class="mega-stat" style="border-top:2px solid var(--green);"><div class="val" style="color:var(--green-light);">8-14</div><div class="desc">Months to Break Even</div></div>
+            <div class="mega-stat" style="border-top:2px solid #FF9800;"><div class="val" style="color:#FF9800;">3x</div><div class="desc">Revenue Spike (Ramadan)</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="phases" class="section-alt">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">05 &mdash; ROADMAP</div>
+            <h2>Business Phases</h2>
+            <div class="h2-ar">&#1605;&#1585;&#1575;&#1581;&#1604; &#1575;&#1604;&#1593;&#1605;&#1604;</div>
+            <p>Start local, prove product-market fit, then expand regionally and internationally.</p>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="timeline fade-up">
+            <div class="tl-item">
+                <div class="tl-content">
+                    <span class="tl-tag tl-green">PHASE 1 | Months 1-6</span>
+                    <h3>Foundation & Local Launch</h3>
+                    <ul>
+                        <li>Register business & JFDA food license</li>
+                        <li>Register with JODA</li>
+                        <li>Develop brand & premium packaging</li>
+                        <li>Source first batch: 2-3 tons Medjool + Barhi</li>
+                        <li>Target local supermarkets in Amman</li>
+                        <li>Social media presence (Instagram, TikTok)</li>
+                        <li>Launch Ramadan premium gift boxes</li>
+                    </ul>
+                </div>
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-content">
+                    <span class="tl-tag tl-orange">PHASE 2 | Months 6-18</span>
+                    <h3>Market Penetration</h3>
+                    <ul>
+                        <li>Expand to Irbid, Zarqa, Aqaba</li>
+                        <li>Launch e-commerce & delivery</li>
+                        <li>Corporate gifting program (B2B)</li>
+                        <li>HoReCa channel: hotels & restaurants</li>
+                        <li>Invest in sorting & vacuum sealing</li>
+                        <li>Apply for export certs (ISO, HACCP)</li>
+                        <li>First trade show participation</li>
+                    </ul>
+                </div>
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-content">
+                    <span class="tl-tag tl-blue">PHASE 3 | Year 2-3</span>
+                    <h3>Regional Expansion</h3>
+                    <ul>
+                        <li>Export to Gulf (UAE, KSA, Kuwait, Qatar)</li>
+                        <li>Gulfood Dubai participation</li>
+                        <li>Stuffed & chocolate-coated lines</li>
+                        <li>Scale packaging facility</li>
+                        <li>Full team of 5-8 employees</li>
+                        <li>Private label manufacturing</li>
+                        <li>50+ tons/year throughput</li>
+                    </ul>
+                </div>
+                <div class="tl-dot"></div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-content">
+                    <span class="tl-tag tl-purple">PHASE 4 | Year 3-5</span>
+                    <h3>International Scale</h3>
+                    <ul>
+                        <li>Enter EU markets (UK, France, Germany)</li>
+                        <li>Health food channels (US, Asia)</li>
+                        <li>Date syrup, paste, energy bars</li>
+                        <li>Organic certification</li>
+                        <li>100+ tons/year, JOD 500K+ revenue</li>
+                        <li>Airlines & duty-free partnerships</li>
+                    </ul>
+                </div>
+                <div class="tl-dot"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPANSION -->
+<section id="expansion">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">06 &mdash; EXPANSION</div>
+            <h2>Target Markets</h2>
+            <div class="h2-ar">&#1575;&#1604;&#1571;&#1587;&#1608;&#1575;&#1602; &#1575;&#1604;&#1605;&#1587;&#1578;&#1607;&#1583;&#1601;&#1577;</div>
+            <p>Prioritized by accessibility, demand, and margin potential.</p>
+            <div class="section-line"></div>
+        </div>
+        <div class="grid-3 fade-up">
+            <div class="exp-card">
+                <h3>Priority 1: Gulf States</h3>
+                <div class="exp-val">$8.2B</div>
+                <p>Highest per-capita consumption. Premium gifting culture. Short shipping, free trade (GAFTA).</p>
+                <div style="margin-top:0.8rem;"><span class="ftag">UAE</span><span class="ftag">Saudi</span><span class="ftag">Kuwait</span><span class="ftag">Qatar</span><span class="ftag">Bahrain</span></div>
+            </div>
+            <div class="exp-card">
+                <h3>Priority 2: European Union</h3>
+                <div class="exp-val">$3.5B</div>
+                <p>Health-conscious consumers. Jordan-EU Association Agreement. CBI export support. High margins.</p>
+                <div style="margin-top:0.8rem;"><span class="ftag">UK</span><span class="ftag">France</span><span class="ftag">Germany</span><span class="ftag">Netherlands</span><span class="ftag">Turkey</span></div>
+            </div>
+            <div class="exp-card">
+                <h3>Priority 3: Emerging</h3>
+                <div class="exp-val">$5.1B</div>
+                <p>Growing middle class. Expanding Muslim populations. Untapped channels. US FTA advantage.</p>
+                <div style="margin-top:0.8rem;"><span class="ftag">Malaysia</span><span class="ftag">Indonesia</span><span class="ftag">USA</span><span class="ftag">Canada</span><span class="ftag">India</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SWOT -->
+<section id="swot" class="section-alt">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">07 &mdash; SWOT</div>
+            <h2>Strategic Assessment</h2>
+            <div class="h2-ar">&#1575;&#1604;&#1578;&#1581;&#1604;&#1610;&#1604; &#1575;&#1604;&#1575;&#1587;&#1578;&#1585;&#1575;&#1578;&#1610;&#1580;&#1610;</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="swot-grid fade-up">
+            <div class="swot-card sw-s">
+                <h3>Strengths</h3>
+                <ul>
+                    <li>In-house carton/packaging manufacturing</li>
+                    <li>Direct supplier (no middleman)</li>
+                    <li>World-class Jordan Medjool quality</li>
+                    <li>14% of global Medjool production</li>
+                    <li>Low startup cost (JOD 8K minimum)</li>
+                    <li>Year-round demand + Ramadan peak</li>
+                    <li>Government support & growing sector</li>
+                </ul>
+            </div>
+            <div class="swot-card sw-w">
+                <h3>Weaknesses</h3>
+                <ul>
+                    <li>New brand, no market recognition</li>
+                    <li>Limited initial marketing capital</li>
+                    <li>Seasonal production (Aug-Nov harvest)</li>
+                    <li>Cold storage infrastructure needed</li>
+                    <li>No export experience initially</li>
+                    <li>Labor challenges in extreme heat</li>
+                </ul>
+            </div>
+            <div class="swot-card sw-o">
+                <h3>Opportunities</h3>
+                <ul>
+                    <li>Global market growing 6.14% CAGR</li>
+                    <li>Health trend: natural sugar alternative</li>
+                    <li>Jordan 2030: doubling to 60K tons</li>
+                    <li>Value-added: syrup, paste, stuffed</li>
+                    <li>E-commerce & D2C channels</li>
+                    <li>Free trade: EU, US, GAFTA</li>
+                    <li>Corporate gifting market</li>
+                    <li>Jordan imports 5K ton deficit = gap</li>
+                </ul>
+            </div>
+            <div class="swot-card sw-t">
+                <h3>Threats</h3>
+                <ul>
+                    <li>Established competitors (Jordan River, Arar)</li>
+                    <li>Water scarcity risk</li>
+                    <li>Price competition from Saudi/Egypt bulk</li>
+                    <li>Currency fluctuation on exports</li>
+                    <li>Climate change impact on yields</li>
+                    <li>Rising fertilizer & input costs</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REGULATORY -->
+<section id="regulatory">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">08 &mdash; REGULATORY</div>
+            <h2>Licenses & Requirements</h2>
+            <div class="h2-ar">&#1575;&#1604;&#1578;&#1585;&#1575;&#1582;&#1610;&#1589; &#1608;&#1575;&#1604;&#1605;&#1578;&#1591;&#1604;&#1576;&#1575;&#1578;</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="reg-grid fade-up">
+            <div class="reg-card"><div class="reg-num">1</div><div><h4>Business Registration</h4><p>Ministry of Industry, Trade & Supply. LLC or sole proprietorship. JOD 200-500.</p></div></div>
+            <div class="reg-card"><div class="reg-num">2</div><div><h4>JFDA Food License</h4><p>Product registration JOD 500-1,200. Lab testing JOD 200-800. GMP required.</p></div></div>
+            <div class="reg-card"><div class="reg-num">3</div><div><h4>Municipality License</h4><p>Operating license for facility. Health & safety inspection. Annual renewal.</p></div></div>
+            <div class="reg-card"><div class="reg-num">4</div><div><h4>JODA Membership</h4><p>Industry access, market connections, export facilitation.</p></div></div>
+            <div class="reg-card"><div class="reg-num">5</div><div><h4>JSMO Standards</h4><p>Codex-based food standards. Zero tolerance for violations.</p></div></div>
+            <div class="reg-card"><div class="reg-num">6</div><div><h4>Export Certs (Phase 2)</h4><p>ISO 22000, HACCP, halal. JOD 1,500-3,000.</p></div></div>
+            <div class="reg-card"><div class="reg-num">7</div><div><h4>Tax Registration</h4><p>Income & Sales Tax. VAT if above threshold.</p></div></div>
+            <div class="reg-card"><div class="reg-num">8</div><div><h4>Social Security</h4><p>SSC registration when hiring. Mandatory contributions.</p></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="section-header fade-up">
+            <div class="section-tag">GET IN TOUCH</div>
+            <h2>Contact Us</h2>
+            <div class="h2-ar">&#1578;&#1608;&#1575;&#1589;&#1604; &#1605;&#1593;&#1606;&#1575;</div>
+            <p>Interested in partnership, wholesale, or distribution? Let's talk.</p>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="contact-grid fade-up">
+            <div class="contact-info">
+                <h3>The House of Jabri for Dates</h3>
+                <div class="ar-sub">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+                <p>Premium Jordanian dates, sourced from the Jordan Valley, packaged with care, and delivered with pride. We're open for wholesale, retail, corporate gifting, and export partnerships.</p>
+                <div class="contact-detail"><span>&#128205;</span><span>Amman, Jordan</span></div>
+                <div class="contact-detail"><span>&#127758;</span><span>Jordan Valley Sourcing</span></div>
+
+                <div style="margin-top:2rem; padding:1.5rem; background:rgba(200,169,110,0.08); border:1px solid var(--border); border-radius:12px;">
+                    <h4 style="color:var(--gold); font-family:'Playfair Display',serif; margin-bottom:0.5rem;">We Offer</h4>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">&#127796; Premium Medjool & Barhi Dates</p>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">&#127873; Luxury Gift Boxes & Corporate Gifts</p>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">&#128230; Wholesale & Bulk Orders</p>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">&#128666; Export & Distribution</p>
+                    <p style="font-size:0.85rem; color:var(--text-muted);">&#127851; Stuffed & Chocolate-Coated Dates</p>
+                </div>
+            </div>
+            <div class="contact-form" id="contactForm">
+                <form id="theForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name / &#1575;&#1604;&#1575;&#1587;&#1605;</label>
+                            <input type="text" name="name" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone / &#1575;&#1604;&#1607;&#1575;&#1578;&#1601;</label>
+                            <input type="tel" name="phone" placeholder="+962 7XX XXX XXX">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email / &#1575;&#1604;&#1576;&#1585;&#1610;&#1583; &#1575;&#1604;&#1573;&#1604;&#1603;&#1578;&#1585;&#1608;&#1606;&#1610;</label>
+                        <input type="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Interest / &#1575;&#1604;&#1575;&#1607;&#1578;&#1605;&#1575;&#1605;</label>
+                        <select name="interest">
+                            <option value="wholesale">Wholesale / &#1580;&#1605;&#1604;&#1577;</option>
+                            <option value="retail">Retail / &#1578;&#1580;&#1586;&#1574;&#1577;</option>
+                            <option value="corporate">Corporate Gifts / &#1607;&#1583;&#1575;&#1610;&#1575; &#1575;&#1604;&#1588;&#1585;&#1603;&#1575;&#1578;</option>
+                            <option value="export">Export / &#1578;&#1589;&#1583;&#1610;&#1585;</option>
+                            <option value="distribution">Distribution / &#1578;&#1608;&#1586;&#1610;&#1593;</option>
+                            <option value="other">Other / &#1571;&#1582;&#1585;&#1609;</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message / &#1575;&#1604;&#1585;&#1587;&#1575;&#1604;&#1577;</label>
+                        <textarea name="message" required placeholder="Tell us about your needs..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send Message / &#1571;&#1585;&#1587;&#1604;</button>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <div style="font-size:3rem; margin-bottom:1rem;">&#9989;</div>
+                    <h3 style="color:var(--gold); font-family:'Playfair Display',serif; margin-bottom:0.5rem;">Message Sent!</h3>
+                    <p style="color:var(--text-muted);">Thank you for reaching out. We'll get back to you shortly.</p>
+                    <p class="ar" style="color:var(--gold-light); direction:rtl; margin-top:0.5rem; font-family:'Cairo',serif;">&#1588;&#1603;&#1585;&#1575;&#1611; &#1604;&#1578;&#1608;&#1575;&#1589;&#1604;&#1603;&#1605;. &#1587;&#1606;&#1585;&#1583; &#1593;&#1604;&#1610;&#1603;&#1605; &#1602;&#1585;&#1610;&#1576;&#1575;&#1611;.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-brand">House of Jabri for Dates</div>
+    <div class="footer-brand-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+    <p>Premium Jordanian Dates | Amman, Jordan</p>
+    <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#market">Market Study</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-disc">
+        Market study data from <a href="https://www.fortunebusinessinsights.com/dates-market-106034">Fortune Business Insights</a>,
+        <a href="https://jordantimes.com">Jordan Times</a>,
+        <a href="https://jodates.org">JODA</a>,
+        <a href="https://www.freshplaza.com">FreshPlaza</a>,
+        <a href="https://www.cbi.eu">CBI</a>.
+        All figures are estimates. Not financial advice.
+        <br>&copy; 2026 House of Jabri for Dates. All rights reserved.
+    </div>
+</footer>
+
+<script>
+// Loader
+window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('done'), 800);
+});
+
+// Scroll animations
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Nav scroll
+window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+// Contact form - mailto fallback
+function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const interest = form.interest.value;
+    const message = form.message.value;
+
+    // Show success
+    form.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+}
+
+// Language toggle (basic)
+let isAr = false;
+function toggleLang() {
+    isAr = !isAr;
+    document.getElementById('langBtn').textContent = isAr ? 'English' : '\u0639\u0631\u0628\u064A';
+    document.body.dir = isAr ? 'rtl' : 'ltr';
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8D5A8"/>
+      <stop offset="50%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="goldGradVert" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8D5A8"/>
+      <stop offset="40%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="dateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C8A96E"/>
+      <stop offset="100%" stop-color="#96751A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- === PALM TREE ICON === -->
+  <g transform="translate(200, 8)">
+    <!-- Trunk — elegant tapered -->
+    <path d="M-3,125 C-2,100 -4,75 -2,50 C0,35 2,35 4,50 C6,75 4,100 5,125 C3,127 -1,127 -3,125 Z" fill="url(#trunkGrad)" opacity="0.9"/>
+    <!-- Trunk texture lines -->
+    <line x1="-2" y1="65" x2="4" y2="65" stroke="#8B6914" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-2" y1="75" x2="4" y2="75" stroke="#8B6914" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-2" y1="85" x2="4" y2="85" stroke="#8B6914" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-2" y1="95" x2="4" y2="95" stroke="#8B6914" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-2" y1="105" x2="4" y2="105" stroke="#8B6914" stroke-width="0.5" opacity="0.4"/>
+    <line x1="-2" y1="115" x2="4" y2="115" stroke="#8B6914" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- Crown base -->
+    <ellipse cx="1" cy="48" rx="6" ry="4" fill="#C8A96E" opacity="0.6"/>
+
+    <!-- Palm fronds — flowing, organic curves -->
+    <!-- Center frond (up) -->
+    <path d="M1,46 C1,30 0,18 0,5" stroke="url(#goldGradVert)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M0,5 C-4,8 -8,15 -7,22 C-5,18 -2,12 0,8 C2,12 5,18 7,22 C8,15 4,8 0,5 Z" fill="url(#goldGrad)" opacity="0.85"/>
+
+    <!-- Right frond 1 (main) -->
+    <path d="M3,46 C15,35 32,28 50,30" stroke="url(#goldGrad)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <path d="M50,30 C42,24 30,22 20,26 C28,27 38,26 46,28 C38,32 28,34 20,34 C30,36 42,34 50,30 Z" fill="url(#goldGrad)" opacity="0.75"/>
+    <!-- Leaflets right 1 -->
+    <path d="M12,40 C16,34 22,30 28,28" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.5"/>
+    <path d="M20,38 C24,32 30,29 36,28" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.5"/>
+    <path d="M30,36 C34,31 40,29 46,29" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.5"/>
+
+    <!-- Right frond 2 (drooping) -->
+    <path d="M4,48 C20,42 38,42 55,50" stroke="url(#goldGrad)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <path d="M55,50 C48,42 36,38 26,40 C34,42 44,42 52,46 C44,50 34,52 26,50 C36,54 48,54 55,50 Z" fill="url(#goldGrad)" opacity="0.65"/>
+
+    <!-- Right frond 3 (lower, more droop) -->
+    <path d="M3,50 C18,52 32,58 42,72" stroke="url(#goldGrad)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M42,72 C38,62 28,56 18,54 C26,56 34,58 40,66 C34,68 24,66 18,62 C26,70 36,74 42,72 Z" fill="url(#goldGrad)" opacity="0.55"/>
+
+    <!-- Left frond 1 (main) -->
+    <path d="M-1,46 C-13,35 -30,28 -48,30" stroke="url(#goldGrad)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <path d="M-48,30 C-40,24 -28,22 -18,26 C-26,27 -36,26 -44,28 C-36,32 -26,34 -18,34 C-28,36 -40,34 -48,30 Z" fill="url(#goldGrad)" opacity="0.75"/>
+    <!-- Leaflets left 1 -->
+    <path d="M-10,40 C-14,34 -20,30 -26,28" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.5"/>
+    <path d="M-18,38 C-22,32 -28,29 -34,28" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.5"/>
+    <path d="M-28,36 C-32,31 -38,29 -44,29" stroke="#C8A96E" stroke-width="0.6" fill="none" opacity="0.5"/>
+
+    <!-- Left frond 2 (drooping) -->
+    <path d="M-2,48 C-18,42 -36,42 -53,50" stroke="url(#goldGrad)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+    <path d="M-53,50 C-46,42 -34,38 -24,40 C-32,42 -42,42 -50,46 C-42,50 -32,52 -24,50 C-34,54 -46,54 -53,50 Z" fill="url(#goldGrad)" opacity="0.65"/>
+
+    <!-- Left frond 3 (lower, more droop) -->
+    <path d="M-1,50 C-16,52 -30,58 -40,72" stroke="url(#goldGrad)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M-40,72 C-36,62 -26,56 -16,54 C-24,56 -32,58 -38,66 C-32,68 -22,66 -16,62 C-24,70 -34,74 -40,72 Z" fill="url(#goldGrad)" opacity="0.55"/>
+
+    <!-- Date clusters hanging -->
+    <!-- Right cluster -->
+    <path d="M8,52 C12,58 14,64 12,70" stroke="#A08030" stroke-width="0.8" fill="none"/>
+    <ellipse cx="11" cy="72" rx="2.5" ry="3.5" fill="url(#dateGrad)"/>
+    <ellipse cx="14" cy="69" rx="2.2" ry="3.2" fill="url(#dateGrad)" opacity="0.85"/>
+    <ellipse cx="8" cy="70" rx="2" ry="3" fill="url(#dateGrad)" opacity="0.75"/>
+    <ellipse cx="12" cy="66" rx="1.8" ry="2.8" fill="url(#dateGrad)" opacity="0.7"/>
+
+    <!-- Left cluster -->
+    <path d="M-6,52 C-10,58 -12,64 -10,70" stroke="#A08030" stroke-width="0.8" fill="none"/>
+    <ellipse cx="-9" cy="72" rx="2.5" ry="3.5" fill="url(#dateGrad)"/>
+    <ellipse cx="-12" cy="69" rx="2.2" ry="3.2" fill="url(#dateGrad)" opacity="0.85"/>
+    <ellipse cx="-6" cy="70" rx="2" ry="3" fill="url(#dateGrad)" opacity="0.75"/>
+    <ellipse cx="-10" cy="66" rx="1.8" ry="2.8" fill="url(#dateGrad)" opacity="0.7"/>
+  </g>
+
+  <!-- === DECORATIVE DIVIDER === -->
+  <g transform="translate(200, 152)">
+    <line x1="-80" y1="0" x2="-15" y2="0" stroke="#C8A96E" stroke-width="0.6" opacity="0.5"/>
+    <line x1="15" y1="0" x2="80" y2="0" stroke="#C8A96E" stroke-width="0.6" opacity="0.5"/>
+    <!-- Small diamond -->
+    <path d="M0,-4 L4,0 L0,4 L-4,0 Z" fill="#C8A96E" opacity="0.6"/>
+  </g>
+
+  <!-- === ENGLISH TEXT === -->
+  <!-- "House of Jabri" — serif, elegant -->
+  <text x="200" y="185" text-anchor="middle" font-family="'Playfair Display', 'Georgia', 'Times New Roman', serif" font-size="36" font-weight="700" fill="#C8A96E" letter-spacing="2">House of Jabri</text>
+
+  <!-- "for Dates" — smaller, lighter -->
+  <text x="200" y="210" text-anchor="middle" font-family="'Playfair Display', 'Georgia', 'Times New Roman', serif" font-size="18" font-weight="400" fill="#E8D5A8" letter-spacing="4" text-transform="uppercase">
+    <tspan letter-spacing="4">FOR DATES</tspan>
+  </text>
+
+  <!-- === THIN SEPARATOR === -->
+  <g transform="translate(200, 225)">
+    <line x1="-50" y1="0" x2="-8" y2="0" stroke="#C8A96E" stroke-width="0.5" opacity="0.4"/>
+    <circle cx="0" cy="0" r="1.5" fill="#C8A96E" opacity="0.5"/>
+    <line x1="8" y1="0" x2="50" y2="0" stroke="#C8A96E" stroke-width="0.5" opacity="0.4"/>
+  </g>
+
+  <!-- === ARABIC TEXT === -->
+  <text x="200" y="258" text-anchor="middle" font-family="'Cairo', 'Noto Sans Arabic', 'Geeza Pro', 'Arial', sans-serif" font-size="28" font-weight="700" fill="#E8D5A8" direction="rtl" opacity="0.9">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</text>
+
+  <!-- === TAGLINE === -->
+  <text x="200" y="285" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', 'Arial', sans-serif" font-size="9" font-weight="400" fill="#D4C4B0" letter-spacing="3" opacity="0.6">
+    <tspan>PREMIUM JORDANIAN DATES</tspan>
+  </text>
+
+  <!-- === BOTTOM ACCENT LINE === -->
+  <g transform="translate(200, 300)">
+    <line x1="-35" y1="0" x2="35" y2="0" stroke="#C8A96E" stroke-width="0.8" opacity="0.3"/>
+  </g>
+</svg>

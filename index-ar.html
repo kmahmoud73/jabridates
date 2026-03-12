@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيت جبري للتمور | تمور أردنية فاخرة</title>
+    <meta name="description" content="تمور مجهول وبرحي فاخرة من غور الأردن. علب هدايا فاخرة، بيع جملة، هدايا شركات، وتصدير.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C8A96E;
+            --gold-hover: #D9BE89;
+            --gold-light: #E8D5A8;
+            --gold-dark: #8B6914;
+            --gold-glow: rgba(200,169,110,0.25);
+            --bg: #0F0A06;
+            --bg2: #160F09;
+            --bg3: #1C140D;
+            --cream: #FFF8F0;
+            --cream2: #F5E6D0;
+            --text: #D4C4B0;
+            --text-muted: #8C7B6A;
+            --white: #FFFFFF;
+            --border: rgba(200,169,110,0.12);
+            --border-hover: rgba(200,169,110,0.35);
+            --green: #4CAF50;
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+            direction: rtl;
+        }
+
+        /* ===== LOADER ===== */
+        .loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--bg);
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 0.5rem;
+            transition: opacity 1s ease, visibility 1s;
+        }
+        .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-ar { font-family: 'Cairo'; font-size: 2.2rem; font-weight: 800; color: var(--gold); animation: glow 2s ease infinite; }
+        @keyframes glow { 0%,100%{opacity:0.3; text-shadow:none;} 50%{opacity:1; text-shadow:0 0 30px var(--gold-glow);} }
+
+        /* ===== LANG TOGGLE ===== */
+        .lang-toggle {
+            display: flex; align-items: center; gap: 0.35rem;
+            border: 1px solid var(--border); border-radius: 50px;
+            padding: 0.3rem 0.8rem; text-decoration: none;
+            transition: all 0.3s; cursor: pointer;
+            margin-right: 0.5rem;
+        }
+        .lang-toggle:hover { border-color: var(--gold); background: rgba(200,169,110,0.08); }
+        .lang-toggle span { font-size: 0.75rem; font-weight: 600; color: var(--gold); }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+            background: rgba(15,10,6,0.85);
+            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid transparent;
+            transition: all 0.4s;
+        }
+        nav.scrolled { border-bottom-color: var(--border); background: rgba(15,10,6,0.95); }
+        .nav-c {
+            max-width: 1300px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 72px;
+        }
+        .nav-brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.2; }
+        .nb-ar { font-family: 'Cairo'; font-size: 1.3rem; font-weight: 800; color: var(--gold); }
+        .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+        .nav-links a {
+            color: var(--text); text-decoration: none; font-size: 0.88rem;
+            font-weight: 600; padding: 0.45rem 0.85rem; border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold); background: rgba(200,169,110,0.06); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+            color: var(--bg) !important; font-weight: 700 !important;
+            padding: 0.5rem 1.3rem !important; border-radius: 10px !important;
+        }
+        .nav-cta:hover { opacity: 0.9 !important; }
+        .nav-mob { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-mob span { display: block; width: 22px; height: 2px; background: var(--gold); margin: 5px 0; border-radius: 2px; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 8rem 2rem 6rem; position: relative; overflow: hidden;
+            background: url('images/dates-palm.jpg') center/cover no-repeat;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(15,10,6,0.92) 0%, rgba(15,10,6,0.75) 40%, rgba(15,10,6,0.92) 100%),
+                radial-gradient(ellipse at 70% 40%, rgba(200,169,110,0.08) 0%, transparent 60%);
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+            background: linear-gradient(transparent, var(--bg));
+        }
+        .hero-c { max-width: 1300px; margin: 0 auto; width: 100%; position: relative; z-index: 2; text-align: center; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            border: 1px solid var(--border);
+            padding: 0.4rem 1.4rem; border-radius: 50px;
+            font-size: 0.78rem; color: var(--gold); letter-spacing: 2px;
+            margin-bottom: 2rem; font-weight: 700;
+        }
+        .hero h1 {
+            font-family: 'Cairo';
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900; color: var(--white);
+            line-height: 1.2; margin-bottom: 0.5rem;
+        }
+        .hero h1 .g { color: var(--gold); }
+        .hero-sub {
+            font-size: 1.15rem; color: var(--text);
+            max-width: 650px; margin: 1rem auto 2.5rem; opacity: 0.8;
+            line-height: 2;
+        }
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-gold {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg); font-weight: 700; font-size: 1rem;
+            padding: 0.9rem 2.2rem; border-radius: 12px;
+            text-decoration: none; transition: all 0.3s;
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--gold-glow); }
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border: 1px solid var(--border);
+            color: var(--gold); font-weight: 600; font-size: 1rem;
+            padding: 0.9rem 2.2rem; border-radius: 12px;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: var(--gold); background: rgba(200,169,110,0.06); }
+
+        /* ===== TRUST BAR ===== */
+        .trust {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(200,169,110,0.02), transparent 50%, rgba(200,169,110,0.02));
+        }
+        .trust-c {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-around;
+            flex-wrap: wrap; gap: 2rem;
+        }
+        .trust-item { text-align: center; }
+        .trust-val {
+            font-family: 'Cairo';
+            font-size: 1.8rem; font-weight: 800; color: var(--gold);
+        }
+        .trust-lbl { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .sec-head { text-align: center; margin-bottom: 3.5rem; }
+        .sec-tag {
+            font-size: 0.78rem; letter-spacing: 2px;
+            color: var(--gold); margin-bottom: 0.8rem; font-weight: 700;
+        }
+        .sec-head h2 {
+            font-family: 'Cairo';
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800; color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        .sec-head p { color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1rem; }
+        .sec-line { width: 50px; height: 2px; background: var(--gold); margin: 1rem auto 0; border-radius: 2px; }
+
+        /* ===== ABOUT ===== */
+        #about { background: var(--bg2); }
+        .about-g { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-visual {
+            border-radius: 20px; overflow: hidden; position: relative;
+            aspect-ratio: 4/5; max-height: 550px;
+        }
+        .about-visual img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 20px; transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .about-visual:hover img { transform: scale(1.03); }
+        .about-visual::after {
+            content: ''; position: absolute; inset: 0; border-radius: 20px;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, transparent 60%, rgba(15,10,6,0.4) 100%);
+            pointer-events: none;
+        }
+        .about-txt h3 { font-family:'Cairo'; font-size:1.8rem; font-weight:800; color:var(--gold); margin-bottom:0.8rem; }
+        .about-txt p { color:var(--text); margin-bottom:1rem; font-size:1rem; line-height:2; }
+        .about-txt .quote {
+            font-style: normal; color: var(--gold-light); font-size: 1.1rem;
+            border-right: 3px solid var(--gold); padding-right: 1rem;
+            margin: 1.5rem 0; font-weight: 600;
+        }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .af {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.5rem; transition: all 0.3s;
+        }
+        .af:hover { border-color: var(--border-hover); }
+        .af-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+        .af h4 { font-size: 0.95rem; color: var(--white); font-weight: 700; margin-bottom: 0.3rem; }
+        .af p { font-size: 0.82rem; color: var(--text-muted); }
+
+        /* ===== PRODUCTS ===== */
+        .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .prod {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: var(--radius); overflow: hidden;
+            transition: all 0.4s; cursor: pointer;
+        }
+        .prod:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 20px 50px rgba(200,169,110,0.15); }
+        .prod-img { background-size: cover; background-position: center;
+            height: 220px;
+            background: linear-gradient(145deg, rgba(200,169,110,0.05), rgba(139,105,20,0.08));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 5rem; position: relative;
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+            overflow: hidden;
+        }
+        .prod:hover .prod-img { transform: scale(1.05); }
+        .prod-img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(15,10,6,0.6) 100%);
+            pointer-events: none;
+        }
+        .prod-view {
+            position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%) translateY(8px);
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
+            color: var(--gold); background: rgba(15,10,6,0.7); backdrop-filter: blur(8px);
+            padding: 0.4rem 1.2rem; border-radius: 20px; border: 1px solid var(--border);
+            opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); z-index: 3;
+        }
+        .prod:hover .prod-view { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .prod-tag {
+            position: absolute; top: 14px; left: 14px; z-index: 3;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;
+            padding: 0.3rem 0.9rem; border-radius: 20px;
+        }
+        .t-prem { background: var(--gold); color: var(--bg); }
+        .t-pop { background: var(--green); color: white; }
+        .t-gift { background: #E65100; color: white; }
+        .t-new { background: #7B1FA2; color: white; }
+        .prod-body { padding: 1.5rem; }
+        .prod-body h3 { font-family:'Cairo'; font-size:1.1rem; font-weight:700; color:var(--white); margin-bottom:0.3rem; }
+        .prod-body p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
+        .prod-price {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 1rem; padding-top: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+        .prod-price .pp {
+            font-family: 'Cairo';
+            font-size: 1.2rem; font-weight: 700; color: var(--gold);
+        }
+        .prod-price .order-btn {
+            font-size: 0.78rem; font-weight: 700;
+            color: var(--gold); border: 1px solid var(--border);
+            padding: 0.35rem 0.9rem; border-radius: 8px;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .prod-price .order-btn:hover { background: var(--gold); color: var(--bg); }
+
+        /* ===== WHY US ===== */
+        #why { background: var(--bg2); }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .why-card {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem; text-align: center;
+            transition: all 0.3s;
+        }
+        .why-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+        .why-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .why-card h3 { font-family:'Cairo'; font-size:1.15rem; font-weight:700; color:var(--white); margin-bottom:0.5rem; }
+        .why-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+
+        /* ===== GIFTING ===== */
+        .gift-banner {
+            background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(139,105,20,0.05));
+            border: 1px solid var(--border);
+            border-radius: 24px; padding: 4rem 3rem;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .gift-banner::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 50%, var(--gold-glow), transparent 70%);
+            opacity: 0.3;
+        }
+        .gift-banner > * { position: relative; z-index: 2; }
+        .gift-banner h2 {
+            font-family: 'Cairo';
+            font-size: 2.5rem; font-weight: 800; color: var(--white); margin-bottom: 0.8rem;
+        }
+        .gift-banner p { font-size: 1.05rem; color: var(--text); max-width: 650px; margin: 0 auto 2rem; line-height: 2; }
+        .gift-types { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .gift-type {
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.2rem 1.8rem; text-align: center;
+            min-width: 140px;
+        }
+        .gift-type .gi { font-size: 2rem; margin-bottom: 0.4rem; }
+        .gift-type h4 { font-size: 0.9rem; color: var(--white); font-weight: 700; }
+
+        /* ===== CONTACT ===== */
+        #contact { background: var(--bg2); }
+        .contact-g { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .ct-info h3 { font-family:'Cairo'; font-size:1.6rem; font-weight:800; color:var(--gold); margin-bottom:0.8rem; }
+        .ct-info p { color:var(--text-muted); font-size:0.95rem; margin-bottom:1rem; line-height:2; }
+        .ct-detail {
+            display: flex; gap: 0.8rem; align-items: center;
+            padding: 0.7rem 0; font-size: 0.95rem; color: var(--cream2);
+        }
+        .ct-detail span:first-child { font-size: 1.2rem; width: 28px; text-align: center; }
+        .ct-offer {
+            margin-top: 2rem; padding: 1.5rem;
+            background: rgba(200,169,110,0.05); border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .ct-offer h4 { font-family:'Cairo'; font-weight:700; color:var(--gold); margin-bottom:0.6rem; font-size:1.1rem; }
+        .ct-offer p { font-size: 0.88rem; color: var(--text-muted); padding: 0.2rem 0; }
+
+        .ct-form {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem;
+        }
+        .fg { margin-bottom: 1.2rem; }
+        .fg label { display: block; font-size: 0.85rem; color: var(--gold-light); font-weight: 600; margin-bottom: 0.4rem; }
+        .fg input, .fg textarea, .fg select {
+            width: 100%; padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+            border-radius: 10px; color: var(--cream2);
+            font-family: 'Cairo', sans-serif; font-size: 0.92rem; transition: all 0.2s;
+            direction: rtl;
+        }
+        .fg input:focus, .fg textarea:focus, .fg select:focus {
+            outline: none; border-color: var(--gold); background: rgba(200,169,110,0.04);
+        }
+        .fg textarea { resize: vertical; min-height: 110px; }
+        .fg select option { background: var(--bg); color: var(--cream2); }
+        .fr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .f-submit {
+            width: 100%; padding: 0.85rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg); font-weight: 700; font-size: 1rem;
+            border: none; border-radius: 10px; cursor: pointer;
+            font-family: 'Cairo', sans-serif; transition: all 0.3s;
+        }
+        .f-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+        .f-ok { display: none; text-align: center; padding: 2rem; }
+        .f-ok.show { display: block; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #080503; border-top: 1px solid var(--border);
+            padding: 3rem 2rem; text-align: center;
+        }
+        .ft-brand { font-family:'Cairo'; font-size:1.5rem; font-weight:800; color:var(--gold); }
+        footer p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem; }
+        .ft-links { margin: 1rem 0; }
+        .ft-links a { color: var(--gold-light); text-decoration: none; font-size: 0.82rem; margin: 0 0.8rem; }
+        .ft-links a:hover { color: var(--gold); }
+        .ft-copy { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--text-muted); opacity: 0.5; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .prod-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-g, .contact-g { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 72px; right: 0; left: 0;
+                background: rgba(15,10,6,0.98); padding: 1rem; border-bottom: 1px solid var(--border);
+            }
+            .nav-mob { display: block; }
+            .prod-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .why-grid { grid-template-columns: 1fr; }
+            .fr2 { grid-template-columns: 1fr; }
+            .trust-c { justify-content: center; }
+            .gift-types { flex-direction: column; align-items: center; }
+            section { padding: 4rem 1.2rem; }
+            .gift-banner { padding: 2.5rem 1.5rem; }
+        }
+
+        /* ===== PRODUCT MODAL ===== */
+        .pm-overlay {
+            position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+            padding: 2rem;
+        }
+        .pm-overlay.open { opacity: 1; visibility: visible; }
+        .pm-overlay.open .pm-box { transform: translateY(0) scale(1); opacity: 1; }
+        .pm-box {
+            background: var(--bg2); border: 1px solid var(--border);
+            border-radius: 20px; max-width: 920px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            transform: translateY(30px) scale(0.95); opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            position: relative; direction: rtl;
+        }
+        .pm-box::-webkit-scrollbar { width: 6px; }
+        .pm-box::-webkit-scrollbar-track { background: transparent; }
+        .pm-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        .pm-close {
+            position: absolute; top: 16px; left: 16px; z-index: 10;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            color: var(--gold); font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; line-height: 1;
+        }
+        .pm-close:hover { background: var(--gold); color: var(--bg); }
+        .pm-gallery {
+            position: relative; width: 100%; height: 400px;
+            border-radius: 20px 20px 0 0; overflow: hidden;
+            background: linear-gradient(145deg, rgba(200,169,110,0.06), rgba(139,105,20,0.1));
+        }
+        .pm-gallery img {
+            width: 100%; height: 100%; object-fit: cover;
+            position: absolute; inset: 0;
+            opacity: 0; transition: opacity 0.6s ease;
+        }
+        .pm-gallery img.active { opacity: 1; }
+        .pm-gallery-grad {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+            background: linear-gradient(transparent, var(--bg2)); z-index: 2;
+        }
+        .pm-dots {
+            position: absolute; bottom: 16px; left: 50%;
+            transform: translateX(-50%); display: flex; gap: 8px; z-index: 5;
+        }
+        .pm-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: rgba(255,255,255,0.3); border: none; cursor: pointer;
+            transition: all 0.25s; padding: 0;
+        }
+        .pm-dot.active { background: var(--gold); transform: scale(1.3); }
+        .pm-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.15);
+            color: white; font-size: 1.1rem; cursor: pointer; z-index: 5;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .pm-nav:hover { background: var(--gold); color: var(--bg); }
+        .pm-prev { right: 14px; }
+        .pm-next { left: 14px; }
+        .pm-content { padding: 2rem 2.5rem 2.5rem; }
+        .pm-tag-wrap { margin-bottom: 0.6rem; }
+        .pm-tag {
+            display: inline-block; font-size: 0.7rem; font-weight: 800;
+            padding: 0.3rem 1rem; border-radius: 20px;
+        }
+        .pm-content h2 {
+            font-family: 'Cairo';
+            font-size: 2rem; font-weight: 800; color: var(--white);
+            margin-bottom: 0.8rem;
+        }
+        .pm-desc {
+            color: var(--text); font-size: 1rem; line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+        .pm-features {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+        .pm-feat {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 10px; padding: 0.75rem 1rem;
+        }
+        .pm-feat-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.15rem; }
+        .pm-feat-txt h4 { font-size: 0.88rem; color: var(--white); font-weight: 700; margin-bottom: 0.1rem; }
+        .pm-feat-txt p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+        .pm-bottom {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 1.2rem; border-top: 1px solid var(--border);
+        }
+        .pm-price-wrap {}
+        .pm-price {
+            font-family: 'Cairo';
+            font-size: 1.8rem; font-weight: 800; color: var(--gold);
+        }
+        .pm-price-note { font-size: 0.78rem; color: var(--text-muted); }
+        .pm-order {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg); font-weight: 700; font-size: 1rem;
+            padding: 0.8rem 2rem; border-radius: 12px; border: none;
+            cursor: pointer; transition: all 0.3s; font-family: 'Cairo', sans-serif;
+            text-decoration: none;
+        }
+        .pm-order:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--gold-glow); }
+        @media (max-width: 768px) {
+            .pm-overlay { padding: 0.5rem; }
+            .pm-gallery { height: 260px; }
+            .pm-content { padding: 1.5rem; }
+            .pm-content h2 { font-size: 1.5rem; }
+            .pm-features { grid-template-columns: 1fr; }
+            .pm-bottom { flex-direction: column; gap: 1rem; align-items: stretch; text-align: center; }
+            .pm-order { justify-content: center; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fi { opacity: 0; transform: translateY(25px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .fi.v { opacity: 1; transform: translateY(0); }
+        .fi.v .prod:nth-child(1), .fi.v .why-card:nth-child(1), .fi.v .af:nth-child(1) { transition-delay: 0s; }
+        .fi.v .prod:nth-child(2), .fi.v .why-card:nth-child(2), .fi.v .af:nth-child(2) { transition-delay: 0.08s; }
+        .fi.v .prod:nth-child(3), .fi.v .why-card:nth-child(3), .fi.v .af:nth-child(3) { transition-delay: 0.16s; }
+        .fi.v .prod:nth-child(4), .fi.v .why-card:nth-child(4), .fi.v .af:nth-child(4) { transition-delay: 0.24s; }
+        .fi.v .prod:nth-child(5) { transition-delay: 0.32s; }
+        .fi.v .prod:nth-child(6) { transition-delay: 0.40s; }
+        .fi.v .prod:nth-child(7) { transition-delay: 0.48s; }
+        .fi.v .prod:nth-child(8) { transition-delay: 0.56s; }
+        .prod, .why-card, .af { opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.3s, box-shadow 0.3s; }
+        .fi.v .prod, .fi.v .why-card, .fi.v .af { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) {
+            .fi, .prod, .why-card, .af { opacity: 1; transform: none; transition: none; }
+            .fi.v .prod, .fi.v .why-card, .fi.v .af { transition: none; }
+            .prod:hover { transform: none; }
+            .prod:hover .prod-img { transform: none; }
+            .loader { transition: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+    <div class="loader-ar">بيت جبري للتمور</div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+    <div class="nav-c">
+        <a href="#" class="nav-brand">
+            <span class="nb-ar">بيت جبري للتمور</span>
+        </a>
+        <div class="nav-links" id="nl">
+            <a href="#about">من نحن</a>
+            <a href="#products">منتجاتنا</a>
+            <a href="#why">لماذا نحن</a>
+            <a href="#gifting">الهدايا</a>
+            <a href="#contact" class="nav-cta">اطلب الآن</a>
+            <a href="index.html" class="lang-toggle"><span>EN</span><span>English</span></a>
+        </div>
+        <button class="nav-mob" onclick="document.getElementById('nl').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-c">
+        <div class="hero-badge">تمور غور الأردن الفاخرة</div>
+        <h1><span class="g">بيت جبري</span> للتمور</h1>
+        <p class="hero-sub">تمور مجهول وبرحي فاخرة من قلب غور الأردن. مختارة بعناية، معبأة بأناقة، وتصلك حتى باب بيتك.</p>
+        <div class="hero-btns">
+            <a href="#products" class="btn-gold">تصفّح منتجاتنا &#8592;</a>
+            <a href="#contact" class="btn-outline">تواصل معنا</a>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+    <div class="trust-c">
+        <div class="trust-item"><div class="trust-val">100%</div><div class="trust-lbl">منتج أردني</div></div>
+        <div class="trust-item"><div class="trust-val">فاخر</div><div class="trust-lbl">مختار يدوياً</div></div>
+        <div class="trust-item"><div class="trust-val">طازج</div><div class="trust-lbl">من المزرعة مباشرة</div></div>
+        <div class="trust-item"><div class="trust-val">مخصص</div><div class="trust-lbl">تغليف وهدايا</div></div>
+        <div class="trust-item"><div class="trust-val">جملة</div><div class="trust-lbl">وتصدير متاح</div></div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="about-g fi">
+            <div class="about-txt">
+                <h3>قصتنا</h3>
+                <!-- About visual is after text for RTL layout -->
+                <p>بيت جبري للتمور هي شركة أردنية متخصصة في التمور الفاخرة، نشأت من شغف حقيقي بالجودة وارتباط عميق بغور الأردن — موطن أجود تمور المجهول والبرحي في العالم.</p>
+                <p>نحصل على تمورنا مباشرة من مزارع موثوقة، نفرزها يدوياً، ونعبئها داخلياً بعناية وحرفية تليق بمائدتكم.</p>
+                <div class="quote">"من قلب غور الأردن إلى مائدتكم"</div>
+            </div>
+            <div class="about-features">
+                <div class="af">
+                    <div class="af-icon">&#127796;</div>
+                    <h4>منشأ غور الأردن</h4>
+                    <p>مناخ تحت مستوى سطح البحر ينتج حلاوة وحجم استثنائيين.</p>
+                </div>
+                <div class="af">
+                    <div class="af-icon">&#128230;</div>
+                    <h4>تغليف مخصص</h4>
+                    <p>تصنيع كراتين داخلي. تحكم كامل بالعلامة التجارية وتشطيب فاخر.</p>
+                </div>
+                <div class="af">
+                    <div class="af-icon">&#129309;</div>
+                    <h4>توريد مباشر</h4>
+                    <p>بدون وسطاء. من المزرعة للتعبئة لضمان الطزاجة وأفضل سعر.</p>
+                </div>
+                <div class="af">
+                    <div class="af-icon">&#10024;</div>
+                    <h4>مختارة يدوياً</h4>
+                    <p>كل تمرة تُفرز حسب الحجم والنعومة والمظهر قبل التعبئة.</p>
+                </div>
+            </div>
+            <div class="about-visual">
+                <img src="images/dates-palm.jpg" alt="نخيل التمور في غور الأردن" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--bg2);">
+    <div class="container">
+        <div class="sec-head fi">
+            <div class="sec-tag">مجموعتنا</div>
+            <h2>تمور فاخرة</h2>
+            <p>من المجهول الملكي إلى علب الهدايا الفاخرة والتمور المغطاة بالشوكولاتة.</p>
+            <div class="sec-line"></div>
+        </div>
+        <div class="prod-grid fi">
+            <div class="prod" data-product="medjool-royal">
+                <div class="prod-img" style="background-image:url('images/medjool-royal.jpg')"><span class="prod-tag t-prem">فاخر</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>مجهول ملكي</h3>
+                    <p>مجهول جامبو مختار يدوياً. ناعم بحلاوة الكراميل الغنية. تاج التمور.</p>
+                    <div class="prod-price"><span class="pp">12 دينار/كغ</span><a href="#contact" class="order-btn">اطلب</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="medjool-select">
+                <div class="prod-img" style="background-image:url('images/medjool-select.jpg')"><span class="prod-tag t-prem">مميز</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>مجهول مميز</h3>
+                    <p>تمور مجهول كبيرة فاخرة. توازن مثالي بين الحلاوة والقوام. رفاهية يومية.</p>
+                    <div class="prod-price"><span class="pp">8 دينار/كغ</span><a href="#contact" class="order-btn">اطلب</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="barhi-golden">
+                <div class="prod-img" style="background-image:url('images/barhi-golden.jpg')"><span class="prod-tag t-pop">الأكثر طلباً</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>برحي ذهبي</h3>
+                    <p>برحي حلو كالعسل. مقرمش وهو طازج، ذائب وهو ناضج. مفضّل الخليج.</p>
+                    <div class="prod-price"><span class="pp">5 دينار/كغ</span><a href="#contact" class="order-btn">اطلب</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="gift-box">
+                <div class="prod-img" style="background-image:url('images/gift-box.jpg')"><span class="prod-tag t-gift">هدايا</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>علبة هدايا فاخرة</h3>
+                    <p>تشكيلة تمور فاخرة في تغليفنا المميز. رمضان، العيد، أعراس، شركات.</p>
+                    <div class="prod-price"><span class="pp">25+ دينار</span><a href="#contact" class="order-btn">اطلب</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="chocolate-dates">
+                <div class="prod-img" style="background-image:url('images/chocolate-dates.jpg')"><span class="prod-tag t-new">جديد</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>تمور بالشوكولاتة</h3>
+                    <p>مجهول مغمس بشوكولاتة بلجيكية داكنة أو بالحليب أو بيضاء. متعة لا تُقاوم.</p>
+                    <div class="prod-price"><span class="pp">15 دينار/علبة</span><a href="#contact" class="order-btn">اطلب</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="stuffed-dates">
+                <div class="prod-img" style="background-image:url('images/stuffed-dates.jpg')"><span class="prod-tag t-new">جديد</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>تمور محشية</h3>
+                    <p>مجهول محشي بالّوز أو الجوز أو الفستق أو الطحينة. حلوى الطبيعة بأفخم صورها.</p>
+                    <div class="prod-price"><span class="pp">12 دينار/علبة</span><a href="#contact" class="order-btn">اطلب</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="wholesale">
+                <div class="prod-img" style="background-image:url('images/wholesale.jpg')"><span class="prod-tag t-pop">جملة</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>بيع بالجملة</h3>
+                    <p>طلبات 5 كغ، 10 كغ، وكميات مخصصة. مثالي للتجار والمطاعم والموزعين.</p>
+                    <div class="prod-price"><span class="pp">أسعار خاصة</span><a href="#contact" class="order-btn">استفسر</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="export">
+                <div class="prod-img" style="background-image:url('images/export-boxes.jpg')"><span class="prod-tag t-gift">تصدير</span><span class="prod-view">عرض التفاصيل</span></div>
+                <div class="prod-body">
+                    <h3>طلبات تصدير</h3>
+                    <p>تصدير بالحاويات إلى الخليج وأوروبا والعالم. وثائق كاملة ومطابقة للمعايير.</p>
+                    <div class="prod-price"><span class="pp">FOB/CIF</span><a href="#contact" class="order-btn">استفسر</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+    <div class="container">
+        <div class="sec-head fi">
+            <div class="sec-tag">لماذا بيت جبري</div>
+            <h2>لماذا تختارنا</h2>
+            <div class="sec-line"></div>
+        </div>
+        <div class="why-grid fi">
+            <div class="why-card">
+                <div class="why-icon">&#127796;</div>
+                <h3>جودة عالمية</h3>
+                <p>الأردن ينتج 14% من مجهول العالم. مناخنا من الأفضل عالمياً لزراعة التمور.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#128230;</div>
+                <h3>تغليف فاخر</h3>
+                <p>تصنيع كراتين داخلي يعني تغليف فاخر مخصص بأسعار منافسة. علامتك، حرفتنا.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#128176;</div>
+                <h3>أفضل سعر مضمون</h3>
+                <p>توريد مباشر + تعبئة داخلية = بدون هامش وسطاء. جودة فاخرة بأسعار عادلة.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#127873;</div>
+                <h3>طلبات مخصصة</h3>
+                <p>علامة تجارية مخصصة، أحجام تعبئة، تشكيلات، وتصنيع خاص لجميع الطلبات.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#10052;&#65039;</div>
+                <h3>سلسلة تبريد</h3>
+                <p>تخزين وشحن بدرجات حرارة مضبوطة يضمن وصول تمورك بحالة مثالية دائماً.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#128666;</div>
+                <h3>توصيل وتصدير</h3>
+                <p>توصيل محلي في كل الأردن. تصدير للخليج وأوروبا والعالم مع دعم وثائقي كامل.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GIFTING -->
+<section id="gifting" style="background:var(--bg2);">
+    <div class="container">
+        <div class="gift-banner fi">
+            <h2>هدايا فاخرة للشركات والمناسبات</h2>
+            <p>اجعل كل مناسبة لا تُنسى مع تمور أردنية فاخرة في تغليف فاخر مخصص. إمكانية وضع علامتك التجارية.</p>
+            <div class="gift-types">
+                <div class="gift-type"><div class="gi">&#127769;</div><h4>رمضان</h4></div>
+                <div class="gift-type"><div class="gi">&#127881;</div><h4>العيد</h4></div>
+                <div class="gift-type"><div class="gi">&#128141;</div><h4>أعراس</h4></div>
+                <div class="gift-type"><div class="gi">&#127970;</div><h4>شركات</h4></div>
+                <div class="gift-type"><div class="gi">&#128354;</div><h4>ضيافة كبار</h4></div>
+            </div>
+            <a href="#contact" class="btn-gold">اطلب عرض سعر مخصص &#8592;</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="sec-head fi">
+            <div class="sec-tag">تواصل معنا</div>
+            <h2>الطلبات والاستفسارات</h2>
+            <p>جاهز تطلب؟ عندك أسئلة؟ يسعدنا نسمع منك.</p>
+            <div class="sec-line"></div>
+        </div>
+        <div class="contact-g fi">
+            <div class="ct-info">
+                <h3>بيت جبري للتمور</h3>
+                <p>سواء كنت تبحث عن تمور فاخرة لعائلتك، علبة هدايا مميزة لمناسبة خاصة، أو شريك جملة لعملك — نحن هنا لمساعدتك.</p>
+                <div class="ct-detail"><span>&#128205;</span><span>عمّان، الأردن</span></div>
+                <div class="ct-detail"><span>&#127796;</span><span>مصدرنا: غور الأردن</span></div>
+
+                <div class="ct-offer">
+                    <h4>نخدم</h4>
+                    <p>&#127796; زبائن أفراد وعائلات</p>
+                    <p>&#127873; هدايا شركات ومناسبات</p>
+                    <p>&#127970; فنادق ومطاعم وتموين</p>
+                    <p>&#128722; سوبرماركت ومحلات بقالة</p>
+                    <p>&#128666; موزعين وشركاء تصدير</p>
+                    <p>&#127851; محلات متخصصة وذواقة</p>
+                </div>
+            </div>
+            <div class="ct-form" id="ctForm">
+                <form id="theForm" onsubmit="sendForm(event)">
+                    <div class="fr2">
+                        <div class="fg"><label>الاسم</label><input type="text" name="name" required placeholder="اسمك الكامل"></div>
+                        <div class="fg"><label>الهاتف</label><input type="tel" name="phone" placeholder="07XX XXX XXX"></div>
+                    </div>
+                    <div class="fg"><label>البريد الإلكتروني</label><input type="email" name="email" required placeholder="your@email.com" dir="ltr"></div>
+                    <div class="fg">
+                        <label>أنا مهتم بـ</label>
+                        <select name="interest">
+                            <option value="retail">طلب تجزئة</option>
+                            <option value="wholesale">بيع جملة</option>
+                            <option value="corporate">هدايا شركات</option>
+                            <option value="export">تصدير</option>
+                            <option value="distribution">توزيع</option>
+                            <option value="custom">طلب مخصص</option>
+                            <option value="other">أخرى</option>
+                        </select>
+                    </div>
+                    <div class="fg"><label>الرسالة</label><textarea name="message" required placeholder="أخبرنا باحتياجاتك — الكميات، التغليف، التوصيل..."></textarea></div>
+                    <button type="submit" class="f-submit">&#8592; أرسل الرسالة</button>
+                </form>
+                <div class="f-ok" id="fOk">
+                    <div style="font-size:3rem; margin-bottom:0.8rem;">&#9989;</div>
+                    <h3 style="font-family:'Cairo'; font-weight:800; color:var(--gold); margin-bottom:0.3rem;">تم إرسال رسالتك!</h3>
+                    <p style="color:var(--text-muted); font-size:0.95rem;">شكراً لتواصلك. سنرد خلال 24 ساعة.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="ft-brand">بيت جبري للتمور</div>
+    <p>تمور أردنية فاخرة | عمّان، الأردن</p>
+    <div class="ft-links">
+        <a href="#about">من نحن</a>
+        <a href="#products">منتجاتنا</a>
+        <a href="#why">لماذا نحن</a>
+        <a href="#gifting">الهدايا</a>
+        <a href="#contact">تواصل معنا</a>
+    </div>
+    <div class="ft-copy">&copy; 2026 بيت جبري للتمور. جميع الحقوق محفوظة.</div>
+</footer>
+
+<!-- Product Modal -->
+<div class="pm-overlay" id="pmOverlay">
+    <div class="pm-box">
+        <button class="pm-close" onclick="closeModal()">&times;</button>
+        <div class="pm-gallery" id="pmGallery">
+            <button class="pm-nav pm-prev" onclick="slideImg(1)">&#8250;</button>
+            <button class="pm-nav pm-next" onclick="slideImg(-1)">&#8249;</button>
+            <div class="pm-dots" id="pmDots"></div>
+            <div class="pm-gallery-grad"></div>
+        </div>
+        <div class="pm-content">
+            <div class="pm-tag-wrap"><span class="pm-tag" id="pmTag"></span></div>
+            <h2 id="pmTitle"></h2>
+            <div class="pm-desc" id="pmDesc"></div>
+            <div class="pm-features" id="pmFeats"></div>
+            <div class="pm-bottom">
+                <div class="pm-price-wrap">
+                    <div class="pm-price" id="pmPrice"></div>
+                    <div class="pm-price-note" id="pmPriceNote"></div>
+                </div>
+                <a href="#contact" class="pm-order" onclick="closeModal()">&#8592; اطلب الآن</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('done'), 600));
+
+document.querySelectorAll('.fi').forEach(el => {
+    new IntersectionObserver(ee => ee.forEach(e => { if(e.isIntersecting) e.target.classList.add('v'); }), {threshold:0.08}).observe(el);
+});
+
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', scrollY > 50));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+        document.getElementById('nl').classList.remove('open');
+    });
+});
+
+function sendForm(e) {
+    e.preventDefault();
+    e.target.style.display='none';
+    document.getElementById('fOk').classList.add('show');
+}
+
+/* ===== PRODUCT MODAL DATA (ARABIC) ===== */
+const products = {
+    'medjool-royal': {
+        title: '\u0645\u062C\u0647\u0648\u0644 \u0645\u0644\u0643\u064A',
+        tag: '\u0641\u0627\u062E\u0631', tagClass: 't-prem',
+        price: '12 \u062F\u064A\u0646\u0627\u0631/\u0643\u063A',
+        priceNote: '\u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 \u0644\u0644\u0637\u0644\u0628: 1 \u0643\u063A',
+        images: ['images/medjool-royal.jpg', 'images/medjool-pile.jpg', 'images/dates-palm.jpg'],
+        desc: '\u062A\u0627\u062C \u0627\u0644\u062A\u0645\u0648\u0631. \u062A\u0645\u0648\u0631 \u0645\u062C\u0647\u0648\u0644 \u0645\u0644\u0643\u064A\u0629 \u0645\u0646 \u0623\u0643\u0628\u0631 \u0648\u0623\u0646\u0639\u0645 \u0648\u0623\u0641\u062E\u0645 \u062A\u0645\u0648\u0631 \u063A\u0648\u0631 \u0627\u0644\u0623\u0631\u062F\u0646. \u0643\u0644 \u062A\u0645\u0631\u0629 \u062A\u064F\u0642\u0637\u0641 \u064A\u062F\u0648\u064A\u0627\u064B \u0641\u064A \u0630\u0631\u0648\u0629 \u0627\u0644\u0646\u0636\u062C \u0648\u062A\u064F\u0641\u062D\u0635 \u0641\u0631\u062F\u064A\u0627\u064B \u0644\u0644\u062D\u062C\u0645 (\u062C\u0627\u0645\u0628\u0648\u060C 23+ \u063A\u0631\u0627\u0645) \u0648\u062C\u0648\u062F\u0629 \u0627\u0644\u0642\u0634\u0631\u0629 \u0648\u0627\u0644\u0642\u0648\u0627\u0645. \u0627\u0644\u0646\u062A\u064A\u062C\u0629: \u062A\u0645\u0631\u0629 \u0634\u062F\u064A\u062F\u0629 \u0627\u0644\u062D\u0644\u0627\u0648\u0629 \u0628\u0646\u0643\u0647\u0627\u062A \u0627\u0644\u0643\u0631\u0627\u0645\u064A\u0644 \u0648\u0627\u0644\u0639\u0633\u0644\u060C \u0646\u0627\u0639\u0645\u0629 \u062A\u0630\u0648\u0628 \u0641\u064A \u0627\u0644\u0641\u0645\u060C \u0628\u0642\u0634\u0631\u0629 \u0639\u0646\u0628\u0631\u064A\u0629 \u0644\u0627\u0645\u0639\u0629 \u062A\u0639\u0643\u0633 \u0627\u0644\u0641\u062E\u0627\u0645\u0629.',
+        features: [
+            { icon: '\u{1F451}', title: '\u062D\u062C\u0645 \u062C\u0627\u0645\u0628\u0648', desc: '23+ \u063A\u0631\u0627\u0645 \u0644\u0644\u062A\u0645\u0631\u0629\u060C \u0623\u0643\u0628\u0631 \u0641\u0626\u0629 \u0645\u062A\u0627\u062D\u0629' },
+            { icon: '\u{1F33F}', title: '100% \u063A\u0648\u0631 \u0627\u0644\u0623\u0631\u062F\u0646', desc: '\u064A\u0646\u0645\u0648 400\u0645 \u062A\u062D\u062A \u0633\u0637\u062D \u0627\u0644\u0628\u062D\u0631 \u0644\u0623\u0642\u0635\u0649 \u062D\u0644\u0627\u0648\u0629' },
+            { icon: '\u{1F91A}', title: '\u0641\u062D\u0635 \u064A\u062F\u0648\u064A', desc: '\u0643\u0644 \u062A\u0645\u0631\u0629 \u062A\u064F\u0641\u062D\u0635 \u0641\u0631\u062F\u064A\u0627\u064B \u0644\u0644\u062C\u0648\u062F\u0629' },
+            { icon: '\u2744\uFE0F', title: '\u0633\u0644\u0633\u0644\u0629 \u062A\u0628\u0631\u064A\u062F', desc: '\u062A\u062D\u0643\u0645 \u0628\u062F\u0631\u062C\u0629 \u0627\u0644\u062D\u0631\u0627\u0631\u0629 \u0645\u0646 \u0627\u0644\u0645\u0632\u0631\u0639\u0629 \u0644\u0628\u0627\u0628\u0643' }
+        ]
+    },
+    'medjool-select': {
+        title: '\u0645\u062C\u0647\u0648\u0644 \u0645\u0645\u064A\u0632',
+        tag: '\u0645\u0645\u064A\u0632', tagClass: 't-prem',
+        price: '8 \u062F\u064A\u0646\u0627\u0631/\u0643\u063A',
+        priceNote: '\u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649 \u0644\u0644\u0637\u0644\u0628: 1 \u0643\u063A',
+        images: ['images/medjool-select.jpg', 'images/medjool-royal.jpg', 'images/medjool-pile.jpg'],
+        desc: '\u0631\u0641\u0627\u0647\u064A\u0629 \u064A\u0648\u0645\u064A\u0629. \u062A\u0645\u0648\u0631 \u0645\u062C\u0647\u0648\u0644 \u0643\u0628\u064A\u0631\u0629 \u0641\u0627\u062E\u0631\u0629 (18-22 \u063A\u0631\u0627\u0645) \u0628\u0646\u0641\u0633 \u062D\u0644\u0627\u0648\u0629 \u0627\u0644\u0643\u0631\u0627\u0645\u064A\u0644 \u0627\u0644\u0645\u0634\u0647\u0648\u0631\u0629 \u0644\u063A\u0648\u0631 \u0627\u0644\u0623\u0631\u062F\u0646. \u062A\u0648\u0627\u0632\u0646 \u0645\u062B\u0627\u0644\u064A \u0628\u064A\u0646 \u0627\u0644\u062D\u0644\u0627\u0648\u0629 \u0648\u0627\u0644\u0631\u0637\u0648\u0628\u0629 \u0648\u0627\u0644\u0642\u0648\u0627\u0645 \u2014 \u0645\u062B\u0627\u0644\u064A\u0629 \u0644\u0644\u0627\u0633\u062A\u0645\u062A\u0627\u0639 \u0627\u0644\u064A\u0648\u0645\u064A \u0648\u0645\u0648\u0627\u0626\u062F \u0625\u0641\u0637\u0627\u0631 \u0631\u0645\u0636\u0627\u0646. \u0623\u0641\u0636\u0644 \u0642\u064A\u0645\u0629 \u0641\u064A \u0627\u0644\u0645\u062C\u0647\u0648\u0644 \u0627\u0644\u0641\u0627\u062E\u0631.',
+        features: [
+            { icon: '\u2B50', title: '\u062D\u062C\u0645 \u0643\u0628\u064A\u0631', desc: '18-22 \u063A\u0631\u0627\u0645 \u0644\u0644\u062A\u0645\u0631\u0629\u060C \u062D\u062C\u0645 \u0645\u0648\u062D\u062F' },
+            { icon: '\u{1F36F}', title: '\u062D\u0644\u0627\u0648\u0629 \u0643\u0631\u0627\u0645\u064A\u0644', desc: '\u0646\u0643\u0647\u0629 \u0643\u0631\u0627\u0645\u064A\u0644 \u0648\u062A\u0648\u0641\u064A \u063A\u0646\u064A\u0629 \u0637\u0628\u064A\u0639\u064A\u0629' },
+            { icon: '\u{1F4B0}', title: '\u0623\u0641\u0636\u0644 \u0642\u064A\u0645\u0629', desc: '\u062C\u0648\u062F\u0629 \u0641\u0627\u062E\u0631\u0629 \u0628\u0633\u0639\u0631 \u0645\u0646\u0627\u0633\u0628' },
+            { icon: '\u{1F4E6}', title: '\u0639\u0628\u0648\u0627\u062A \u0645\u062A\u0639\u062F\u062F\u0629', desc: '\u0645\u062A\u0648\u0641\u0631 \u0628\u0639\u0628\u0648\u0627\u062A 1 \u0648 3 \u0648 5 \u0648 10 \u0643\u063A' }
+        ]
+    },
+    'barhi-golden': {
+        title: '\u0628\u0631\u062D\u064A \u0630\u0647\u0628\u064A',
+        tag: '\u0627\u0644\u0623\u0643\u062B\u0631 \u0637\u0644\u0628\u0627\u064B', tagClass: 't-pop',
+        price: '5 \u062F\u064A\u0646\u0627\u0631/\u0643\u063A',
+        priceNote: '\u0645\u0648\u0633\u0645\u064A \u2014 \u0627\u0637\u0644\u0628 \u0645\u0628\u0643\u0631\u0627\u064B',
+        images: ['images/barhi-golden.jpg', 'images/barhi-ripe.jpg', 'images/dates-palm.jpg'],
+        desc: '\u062C\u0648\u0647\u0631\u0629 \u063A\u0648\u0631 \u0627\u0644\u0623\u0631\u062F\u0646 \u0627\u0644\u0630\u0647\u0628\u064A\u0629. \u0627\u0644\u0628\u0631\u062D\u064A \u0641\u0631\u064A\u062F \u0645\u0646 \u0646\u0648\u0639\u0647 \u2014 \u064A\u0645\u0643\u0646 \u0627\u0644\u0627\u0633\u062A\u0645\u062A\u0627\u0639 \u0628\u0647 \u0645\u0642\u0631\u0645\u0634\u0627\u064B \u0648\u0630\u0647\u0628\u064A\u0627\u064B \u0648\u0647\u0648 \u0637\u0627\u0632\u062C (\u0645\u0631\u062D\u0644\u0629 \u0627\u0644\u062E\u0644\u0627\u0644) \u0628\u062D\u0644\u0627\u0648\u0629 \u062A\u0634\u0628\u0647 \u0627\u0644\u062A\u0641\u0627\u062D\u060C \u0623\u0648 \u0646\u0627\u0639\u0645\u0627\u064B \u0648\u0639\u0646\u0628\u0631\u064A\u0627\u064B \u0639\u0646\u062F\u0645\u0627 \u064A\u0646\u0636\u062C (\u0645\u0631\u062D\u0644\u0629 \u0627\u0644\u0631\u0637\u0628) \u0628\u0646\u0643\u0647\u0629 \u0627\u0644\u0639\u0633\u0644 \u0648\u0627\u0644\u0632\u0628\u062F\u0629. \u0627\u0644\u0645\u0641\u0636\u0644 \u0627\u0644\u0623\u0648\u0644 \u0641\u064A \u0623\u0633\u0648\u0627\u0642 \u0627\u0644\u062E\u0644\u064A\u062C.',
+        features: [
+            { icon: '\u{1F31F}', title: '\u0637\u0631\u064A\u0642\u062A\u0627\u0646 \u0644\u0644\u0627\u0633\u062A\u0645\u062A\u0627\u0639', desc: '\u0645\u0642\u0631\u0645\u0634 \u0637\u0627\u0632\u062C (\u062E\u0644\u0627\u0644) \u0623\u0648 \u0646\u0627\u0639\u0645 \u0646\u0627\u0636\u062C (\u0631\u0637\u0628)' },
+            { icon: '\u{1F36F}', title: '\u062D\u0644\u0627\u0648\u0629 \u0627\u0644\u0639\u0633\u0644', desc: '\u0646\u0643\u0647\u0629 \u0632\u0628\u062F\u0629 \u0648\u0639\u0633\u0644 \u0645\u0645\u064A\u0632\u0629' },
+            { icon: '\u{1F3C6}', title: '\u0645\u0641\u0636\u0644 \u0627\u0644\u062E\u0644\u064A\u062C', desc: '\u0627\u0644\u0623\u0643\u062B\u0631 \u0645\u0628\u064A\u0639\u0627\u064B \u0641\u064A \u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062A \u0648\u0627\u0644\u0633\u0639\u0648\u062F\u064A\u0629 \u0648\u0642\u0637\u0631' },
+            { icon: '\u{1F4C5}', title: '\u0645\u0648\u0633\u0645\u064A', desc: '\u0645\u0648\u0633\u0645 \u062D\u0635\u0627\u062F \u0645\u062D\u062F\u0648\u062F \u2014 \u0630\u0631\u0648\u0629 \u0623\u063A\u0633\u0637\u0633-\u0623\u0643\u062A\u0648\u0628\u0631' }
+        ]
+    },
+    'gift-box': {
+        title: '\u0639\u0644\u0628\u0629 \u0647\u062F\u0627\u064A\u0627 \u0641\u0627\u062E\u0631\u0629',
+        tag: '\u0647\u062F\u0627\u064A\u0627', tagClass: 't-gift',
+        price: '25+ \u062F\u064A\u0646\u0627\u0631',
+        priceNote: '\u0623\u062D\u062C\u0627\u0645 \u0645\u062E\u0635\u0635\u0629 \u0645\u0646 500\u063A \u0625\u0644\u0649 5\u0643\u063A',
+        images: ['images/gift-box.jpg', 'images/gift-ramadan.jpg', 'images/medjool-royal.jpg'],
+        desc: '\u0627\u062C\u0639\u0644 \u0643\u0644 \u0645\u0646\u0627\u0633\u0628\u0629 \u0644\u0627 \u062A\u064F\u0646\u0633\u0649. \u0639\u0644\u0628 \u0627\u0644\u0647\u062F\u0627\u064A\u0627 \u0627\u0644\u0641\u0627\u062E\u0631\u0629 \u062A\u064F\u062C\u0645\u0639 \u064A\u062F\u0648\u064A\u0627\u064B \u0628\u0623\u062C\u0648\u062F \u062A\u0645\u0648\u0631 \u0627\u0644\u0645\u062C\u0647\u0648\u0644 \u0648\u0627\u0644\u0628\u0631\u062D\u064A\u060C \u0641\u064A \u062A\u063A\u0644\u064A\u0641 \u0641\u0627\u062E\u0631 \u0628\u0644\u0645\u0633\u0627\u062A \u0630\u0647\u0628\u064A\u0629 \u0648\u0628\u0637\u0627\u0646\u0629 \u0633\u0627\u062A\u0627\u0646 \u0648\u0634\u0631\u064A\u0637. \u0645\u062A\u0648\u0641\u0631\u0629 \u0628\u0623\u062D\u062C\u0627\u0645 \u0645\u062A\u0639\u062F\u062F\u0629. \u0637\u0628\u0627\u0639\u0629 \u0634\u0639\u0627\u0631 \u0645\u062A\u0627\u062D\u0629 \u0644\u0644\u0637\u0644\u0628\u0627\u062A \u0641\u0648\u0642 50 \u0639\u0644\u0628\u0629.',
+        features: [
+            { icon: '\u{1F381}', title: '\u062A\u0635\u0645\u064A\u0645 \u0645\u062E\u0635\u0635', desc: '\u0623\u062D\u062C\u0627\u0645 \u0648\u0623\u0644\u0648\u0627\u0646 \u0648\u0639\u0644\u0627\u0645\u0627\u062A \u062A\u062C\u0627\u0631\u064A\u0629 \u062D\u0633\u0628 \u0627\u0644\u0637\u0644\u0628' },
+            { icon: '\u{1F319}', title: '\u0631\u0645\u0636\u0627\u0646 \u0648\u0627\u0644\u0639\u064A\u062F', desc: '\u062A\u063A\u0644\u064A\u0641 \u0645\u062E\u0635\u0635 \u0644\u0644\u0645\u0646\u0627\u0633\u0628\u0627\u062A \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064A\u0629' },
+            { icon: '\u{1F48D}', title: '\u0623\u0639\u0631\u0627\u0633 \u0648\u0645\u0646\u0627\u0633\u0628\u0627\u062A', desc: '\u0647\u062F\u0627\u064A\u0627 \u0623\u0646\u064A\u0642\u0629 \u0644\u0644\u0645\u062F\u0639\u0648\u064A\u0646 \u0648\u0627\u0644\u0645\u0648\u0627\u0626\u062F' },
+            { icon: '\u{1F3E2}', title: '\u0647\u062F\u0627\u064A\u0627 \u0634\u0631\u0643\u0627\u062A', desc: '\u0637\u0628\u0627\u0639\u0629 \u0634\u0639\u0627\u0631 \u0644\u0644\u0637\u0644\u0628\u0627\u062A \u0641\u0648\u0642 50 \u0639\u0644\u0628\u0629' }
+        ]
+    },
+    'chocolate-dates': {
+        title: '\u062A\u0645\u0648\u0631 \u0628\u0627\u0644\u0634\u0648\u0643\u0648\u0644\u0627\u062A\u0629',
+        tag: '\u062C\u062F\u064A\u062F', tagClass: 't-new',
+        price: '15 \u062F\u064A\u0646\u0627\u0631/\u0639\u0644\u0628\u0629',
+        priceNote: '\u0639\u0644\u0628\u0629 500\u063A \u2014 \u062A\u0642\u0631\u064A\u0628\u0627\u064B 18-20 \u0642\u0637\u0639\u0629',
+        images: ['images/chocolate-dates.jpg', 'images/chocolate-close.jpg', 'images/medjool-pile.jpg'],
+        desc: '\u062D\u064A\u062B \u064A\u0644\u062A\u0642\u064A \u0645\u062C\u0647\u0648\u0644 \u063A\u0648\u0631 \u0627\u0644\u0623\u0631\u062F\u0646 \u0628\u0627\u0644\u0634\u0648\u0643\u0648\u0644\u0627\u062A\u0629 \u0627\u0644\u0628\u0644\u062C\u064A\u0643\u064A\u0629. \u0643\u0644 \u062A\u0645\u0631\u0629 \u062A\u064F\u0632\u0627\u0644 \u0628\u0630\u0631\u062A\u0647\u0627 \u0628\u0639\u0646\u0627\u064A\u0629 \u062B\u0645 \u062A\u064F\u063A\u0645\u0633 \u0641\u064A \u0634\u0648\u0643\u0648\u0644\u0627\u062A\u0629 \u0628\u0644\u062C\u064A\u0643\u064A\u0629 \u0641\u0627\u062E\u0631\u0629 \u2014 \u062F\u0627\u0643\u0646\u0629 (70% \u0643\u0627\u0643\u0627\u0648)\u060C \u0628\u0627\u0644\u062D\u0644\u064A\u0628\u060C \u0623\u0648 \u0628\u064A\u0636\u0627\u0621. \u062A\u064F\u0632\u064A\u0651\u0646 \u0628\u0627\u0644\u0641\u0633\u062A\u0642 \u0627\u0644\u0645\u0637\u062D\u0648\u0646 \u0623\u0648 \u0628\u062A\u0644\u0627\u062A \u0627\u0644\u0648\u0631\u062F \u0623\u0648 \u063A\u0628\u0627\u0631 \u0627\u0644\u0630\u0647\u0628 \u0623\u0648 \u0631\u0642\u0627\u0626\u0642 \u0627\u0644\u0645\u0644\u062D.',
+        features: [
+            { icon: '\u{1F36B}', title: '\u0634\u0648\u0643\u0648\u0644\u0627\u062A\u0629 \u0628\u0644\u062C\u064A\u0643\u064A\u0629', desc: '\u062F\u0627\u0643\u0646\u0629 70%\u060C \u0628\u0627\u0644\u062D\u0644\u064A\u0628\u060C \u0623\u0648 \u0628\u064A\u0636\u0627\u0621' },
+            { icon: '\u2728', title: '\u062A\u0632\u064A\u064A\u0646 \u062D\u0631\u0641\u064A', desc: '\u0641\u0633\u062A\u0642\u060C \u0648\u0631\u062F\u060C \u063A\u0628\u0627\u0631 \u0630\u0647\u0628\u060C \u0645\u0644\u062D \u0628\u062D\u0631\u064A' },
+            { icon: '\u{1F381}', title: '\u062C\u0627\u0647\u0632\u0629 \u0644\u0644\u0625\u0647\u062F\u0627\u0621', desc: '\u0641\u064A \u0639\u0644\u0628\u0629 \u0633\u0648\u062F\u0627\u0621 \u0648\u0630\u0647\u0628\u064A\u0629 \u0645\u0645\u064A\u0632\u0629' },
+            { icon: '\u2744\uFE0F', title: '\u0634\u062D\u0646 \u0645\u0628\u0631\u062F', desc: '\u062A\u0648\u0635\u064A\u0644 \u0628\u062A\u0628\u0631\u064A\u062F \u0644\u0644\u062D\u0641\u0627\u0638 \u0639\u0644\u0649 \u0627\u0644\u0634\u0648\u0643\u0648\u0644\u0627\u062A\u0629' }
+        ]
+    },
+    'stuffed-dates': {
+        title: '\u062A\u0645\u0648\u0631 \u0645\u062D\u0634\u064A\u0629',
+        tag: '\u062C\u062F\u064A\u062F', tagClass: 't-new',
+        price: '12 \u062F\u064A\u0646\u0627\u0631/\u0639\u0644\u0628\u0629',
+        priceNote: '\u0639\u0644\u0628\u0629 500\u063A \u2014 \u062A\u0642\u0631\u064A\u0628\u0627\u064B 16-18 \u0642\u0637\u0639\u0629',
+        images: ['images/stuffed-dates.jpg', 'images/stuffed-variety.jpg', 'images/medjool-royal.jpg'],
+        desc: '\u062D\u0644\u0648\u0649 \u0627\u0644\u0637\u0628\u064A\u0639\u0629 \u0628\u0623\u0641\u062E\u0645 \u0635\u0648\u0631\u0647\u0627. \u062A\u0645\u0648\u0631 \u0645\u062C\u0647\u0648\u0644 \u0641\u0627\u062E\u0631\u0629 \u062A\u064F\u0632\u0627\u0644 \u0628\u0630\u0648\u0631\u0647\u0627 \u064A\u062F\u0648\u064A\u0627\u064B \u0648\u062A\u064F\u062D\u0634\u0649 \u0628\u0633\u062E\u0627\u0621 \u0628\u0623\u062C\u0648\u062F \u0627\u0644\u0645\u0643\u0633\u0631\u0627\u062A. \u0627\u062E\u062A\u0631 \u0627\u0644\u0644\u0648\u0632 \u0627\u0644\u0645\u062D\u0645\u0635\u060C \u0627\u0644\u062C\u0648\u0632 \u0627\u0644\u0645\u0643\u0631\u0645\u0644\u060C \u0627\u0644\u0641\u0633\u062A\u0642 \u0627\u0644\u0623\u062E\u0636\u0631\u060C \u0623\u0648 \u0627\u0644\u0637\u062D\u064A\u0646\u0629 \u0627\u0644\u0646\u0627\u0639\u0645\u0629. \u062A\u0648\u0627\u0632\u0646 \u0645\u062B\u0627\u0644\u064A \u0628\u064A\u0646 \u062D\u0644\u0627\u0648\u0629 \u0627\u0644\u0645\u062C\u0647\u0648\u0644 \u0627\u0644\u0637\u0628\u064A\u0639\u064A\u0629 \u0648\u063A\u0646\u0649 \u0627\u0644\u062D\u0634\u0648\u0629.',
+        features: [
+            { icon: '\u{1F95C}', title: '\u0645\u062D\u0634\u064A \u0644\u0648\u0632', desc: '\u0644\u0648\u0632 \u0643\u0627\u0645\u0644 \u0645\u062D\u0645\u0635\u060C \u0643\u0644\u0627\u0633\u064A\u0643\u064A \u0648\u0645\u0642\u0631\u0645\u0634' },
+            { icon: '\u{1F330}', title: '\u0645\u062D\u0634\u064A \u062C\u0648\u0632', desc: '\u062C\u0648\u0632 \u0645\u0643\u0631\u0645\u0644\u060C \u063A\u0646\u064A \u0648\u0641\u0627\u062E\u0631' },
+            { icon: '\u{1F33F}', title: '\u0645\u062D\u0634\u064A \u0641\u0633\u062A\u0642', desc: '\u0641\u0633\u062A\u0642 \u0623\u062E\u0636\u0631 \u0646\u0627\u0628\u0636\u060C \u0645\u0644\u0648\u0646 \u0648\u0644\u0630\u064A\u0630' },
+            { icon: '\u{1FAD8}', title: '\u0645\u062D\u0634\u064A \u0637\u062D\u064A\u0646\u0629', desc: '\u0637\u062D\u064A\u0646\u0629 \u0633\u0645\u0633\u0645 \u0646\u0627\u0639\u0645\u0629\u060C \u0644\u0645\u0633\u0629 \u0634\u0631\u0642\u064A\u0629' }
+        ]
+    },
+    'wholesale': {
+        title: '\u0628\u064A\u0639 \u0628\u0627\u0644\u062C\u0645\u0644\u0629',
+        tag: '\u062C\u0645\u0644\u0629', tagClass: 't-pop',
+        price: '\u0623\u0633\u0639\u0627\u0631 \u062E\u0627\u0635\u0629',
+        priceNote: '\u062E\u0635\u0648\u0645\u0627\u062A \u0643\u0645\u064A\u0627\u062A \u062A\u0628\u062F\u0623 \u0645\u0646 50\u0643\u063A',
+        images: ['images/wholesale.jpg', 'images/medjool-pile.jpg', 'images/dates-palm.jpg'],
+        desc: '\u0643\u0646 \u0634\u0631\u064A\u0643\u0646\u0627 \u0644\u062A\u0648\u0631\u064A\u062F \u0645\u0633\u062A\u0645\u0631 \u0639\u0627\u0644\u064A \u0627\u0644\u062C\u0648\u062F\u0629. \u0646\u062E\u062F\u0645 \u0627\u0644\u0633\u0648\u0628\u0631\u0645\u0627\u0631\u0643\u062A\u060C \u0627\u0644\u0645\u0637\u0627\u0639\u0645\u060C \u0627\u0644\u0641\u0646\u0627\u062F\u0642\u060C \u0634\u0631\u0643\u0627\u062A \u0627\u0644\u062A\u0645\u0648\u064A\u0646\u060C \u0648\u0645\u062D\u0644\u0627\u062A \u0627\u0644\u0623\u063A\u0630\u064A\u0629 \u0627\u0644\u0645\u062A\u062E\u0635\u0635\u0629. \u0637\u0644\u0628\u0627\u062A \u0628\u0639\u0628\u0648\u0627\u062A 5 \u0648 10 \u0643\u063A \u0648\u0643\u0645\u064A\u0627\u062A \u0645\u062E\u0635\u0635\u0629. \u0623\u0633\u0639\u0627\u0631 \u062C\u0645\u0644\u0629 \u0645\u0646\u0627\u0641\u0633\u0629 \u0645\u0639 \u062E\u0635\u0648\u0645\u0627\u062A \u0643\u0645\u064A\u0627\u062A\u060C \u0648\u062A\u0635\u0646\u064A\u0639 \u062E\u0627\u0635 (\u0639\u0644\u0627\u0645\u062A\u0643 \u0639\u0644\u0649 \u062A\u0645\u0648\u0631\u0646\u0627).',
+        features: [
+            { icon: '\u{1F4E6}', title: '\u0623\u062D\u062C\u0627\u0645 \u0645\u0631\u0646\u0629', desc: '\u0643\u0631\u0627\u062A\u064A\u0646 5 \u0648 10 \u0643\u063A \u0623\u0648 \u062A\u063A\u0644\u064A\u0641 \u0645\u062E\u0635\u0635' },
+            { icon: '\u{1F3F7}\uFE0F', title: '\u062A\u0635\u0646\u064A\u0639 \u062E\u0627\u0635', desc: '\u0639\u0644\u0627\u0645\u062A\u0643 \u0627\u0644\u062A\u062C\u0627\u0631\u064A\u0629 \u0639\u0644\u0649 \u062A\u0645\u0648\u0631\u0646\u0627 \u0627\u0644\u0641\u0627\u062E\u0631\u0629' },
+            { icon: '\u{1F4C9}', title: '\u062E\u0635\u0648\u0645\u0627\u062A \u0643\u0645\u064A\u0627\u062A', desc: '\u0623\u0633\u0639\u0627\u0631 \u0623\u0641\u0636\u0644 \u0628\u0627\u0644\u0643\u0645\u064A\u0627\u062A \u0627\u0644\u0623\u0643\u0628\u0631' },
+            { icon: '\u{1F504}', title: '\u062A\u0648\u0631\u064A\u062F \u0637\u0648\u0627\u0644 \u0627\u0644\u0639\u0627\u0645', desc: '\u062A\u062E\u0632\u064A\u0646 \u0628\u0627\u0631\u062F \u064A\u0636\u0645\u0646 \u062A\u0648\u0641\u0631 \u0645\u0633\u062A\u0645\u0631' }
+        ]
+    },
+    'export': {
+        title: '\u0637\u0644\u0628\u0627\u062A \u062A\u0635\u062F\u064A\u0631',
+        tag: '\u062A\u0635\u062F\u064A\u0631', tagClass: 't-gift',
+        price: 'FOB / CIF',
+        priceNote: '\u0627\u0644\u062D\u062F \u0627\u0644\u0623\u062F\u0646\u0649: 1 \u0628\u0627\u0644\u064A\u062A (500\u0643\u063A)',
+        images: ['images/export-boxes.jpg', 'images/wholesale.jpg', 'images/dates-palm.jpg'],
+        desc: '\u0627\u0646\u0642\u0644 \u0623\u062C\u0648\u062F \u062A\u0645\u0648\u0631 \u0627\u0644\u0623\u0631\u062F\u0646 \u0625\u0644\u0649 \u0627\u0644\u0639\u0627\u0644\u0645. \u0646\u062A\u0648\u0644\u0649 \u0639\u0645\u0644\u064A\u0627\u062A \u0627\u0644\u062A\u0635\u062F\u064A\u0631 \u0628\u0627\u0644\u0643\u0627\u0645\u0644 \u0645\u0646 \u0634\u062D\u0646 \u0628\u062D\u0627\u0648\u064A\u0627\u062A \u0645\u0628\u0631\u062F\u0629\u060C \u0648\u062B\u0627\u0626\u0642 \u062A\u0635\u062F\u064A\u0631 \u0643\u0627\u0645\u0644\u0629 (\u0634\u0647\u0627\u062F\u0627\u062A \u0635\u062D\u064A\u0629\u060C \u0634\u0647\u0627\u062F\u0627\u062A \u0645\u0646\u0634\u0623)\u060C \u0648\u062A\u0646\u0633\u064A\u0642 \u062C\u0645\u0631\u0643\u064A. \u0646\u0635\u062F\u0631 \u062D\u0627\u0644\u064A\u0627\u064B \u0644\u062F\u0648\u0644 \u0627\u0644\u062E\u0644\u064A\u062C \u0648\u0627\u0644\u0627\u062A\u062D\u0627\u062F \u0627\u0644\u0623\u0648\u0631\u0648\u0628\u064A \u0648\u0622\u0633\u064A\u0627. FOB \u0627\u0644\u0639\u0642\u0628\u0629 \u0623\u0648 CIF \u0644\u0645\u064A\u0646\u0627\u0626\u0643.',
+        features: [
+            { icon: '\u{1F30D}', title: '\u0648\u0635\u0648\u0644 \u0639\u0627\u0644\u0645\u064A', desc: '\u0627\u0644\u062E\u0644\u064A\u062C\u060C \u0623\u0648\u0631\u0648\u0628\u0627\u060C \u0622\u0633\u064A\u0627 \u2014 \u0634\u0628\u0643\u0629 \u0645\u062A\u0646\u0627\u0645\u064A\u0629' },
+            { icon: '\u{1F4CB}', title: '\u0648\u062B\u0627\u0626\u0642 \u0643\u0627\u0645\u0644\u0629', desc: '\u0634\u0647\u0627\u062F\u0627\u062A \u0635\u062D\u064A\u0629\u060C \u0645\u0646\u0634\u0623\u060C \u0641\u0648\u0627\u062A\u064A\u0631\u060C \u0642\u0648\u0627\u0626\u0645 \u062A\u0639\u0628\u0626\u0629' },
+            { icon: '\u{1F69A}', title: '\u062D\u0627\u0648\u064A\u0627\u062A \u0645\u0628\u0631\u062F\u0629', desc: '\u0634\u062D\u0646 \u0628\u062D\u0627\u0648\u064A\u0627\u062A \u0645\u0639 \u062A\u062D\u0643\u0645 \u0628\u0627\u0644\u062D\u0631\u0627\u0631\u0629' },
+            { icon: '\u{1F91D}', title: '\u0634\u0631\u0648\u0637 \u062A\u062C\u0627\u0631\u064A\u0629', desc: 'FOB \u0627\u0644\u0639\u0642\u0628\u0629 \u0623\u0648 CIF \u0644\u0645\u064A\u0646\u0627\u0626\u0643' }
+        ]
+    }
+};
+
+let currentSlide = 0;
+let currentImages = [];
+
+function openModal(productId) {
+    const p = products[productId];
+    if (!p) return;
+    currentImages = p.images;
+    currentSlide = 0;
+
+    const gallery = document.getElementById('pmGallery');
+    gallery.querySelectorAll('img').forEach(img => img.remove());
+    p.images.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = p.title;
+        img.loading = 'lazy';
+        if (i === 0) img.classList.add('active');
+        gallery.insertBefore(img, gallery.firstChild);
+    });
+
+    const dots = document.getElementById('pmDots');
+    dots.innerHTML = '';
+    p.images.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'pm-dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => goToSlide(i);
+        dots.appendChild(d);
+    });
+
+    document.getElementById('pmTag').className = 'pm-tag ' + p.tagClass;
+    document.getElementById('pmTag').textContent = p.tag;
+    document.getElementById('pmTitle').textContent = p.title;
+    document.getElementById('pmDesc').textContent = p.desc;
+    document.getElementById('pmPrice').textContent = p.price;
+    document.getElementById('pmPriceNote').textContent = p.priceNote;
+
+    const feats = document.getElementById('pmFeats');
+    feats.innerHTML = '';
+    p.features.forEach(f => {
+        feats.innerHTML += '<div class="pm-feat"><div class="pm-feat-icon">' + f.icon + '</div><div class="pm-feat-txt"><h4>' + f.title + '</h4><p>' + f.desc + '</p></div></div>';
+    });
+
+    document.getElementById('pmOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('pmOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function goToSlide(n) {
+    currentSlide = n;
+    const imgs = document.querySelectorAll('#pmGallery img');
+    const dots = document.querySelectorAll('#pmDots .pm-dot');
+    imgs.forEach((img, i) => img.classList.toggle('active', i === (imgs.length - 1 - n)));
+    dots.forEach((d, i) => d.classList.toggle('active', i === n));
+}
+
+function slideImg(dir) {
+    let next = currentSlide + dir;
+    if (next < 0) next = currentImages.length - 1;
+    if (next >= currentImages.length) next = 0;
+    goToSlide(next);
+}
+
+document.querySelectorAll('.prod[data-product]').forEach(card => {
+    card.addEventListener('click', function(e) {
+        if (e.target.closest('.order-btn')) return;
+        e.preventDefault();
+        openModal(this.dataset.product);
+    });
+});
+
+document.getElementById('pmOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('pmOverlay').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') slideImg(-1);
+    if (e.key === 'ArrowLeft') slideImg(1);
+});
+</script>
+
+</body>
+</html>

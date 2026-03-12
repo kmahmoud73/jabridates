@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Jabri for Dates | بيت جبري للتمور | Premium Jordanian Dates</title>
+    <meta name="description" content="Premium Medjool & Barhi dates from Jordan Valley. Luxury gift boxes, wholesale, corporate gifts, and export. بيت جبري للتمور الأردنية الفاخرة">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C8A96E;
+            --gold-hover: #D9BE89;
+            --gold-light: #E8D5A8;
+            --gold-dark: #8B6914;
+            --gold-glow: rgba(200,169,110,0.25);
+            --bg: #0F0A06;
+            --bg2: #160F09;
+            --bg3: #1C140D;
+            --cream: #FFF8F0;
+            --cream2: #F5E6D0;
+            --text: #D4C4B0;
+            --text-muted: #8C7B6A;
+            --white: #FFFFFF;
+            --border: rgba(200,169,110,0.12);
+            --border-hover: rgba(200,169,110,0.35);
+            --green: #4CAF50;
+            --radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', 'Cairo', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== LOADER ===== */
+        .loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--bg);
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 0.5rem;
+            transition: opacity 1s ease, visibility 1s;
+        }
+        .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-en { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); animation: glow 2s ease infinite; }
+        .loader-ar { font-family: 'Cairo', serif; font-size: 1.3rem; color: var(--gold-light); direction: rtl; }
+        @keyframes glow { 0%,100%{opacity:0.3; text-shadow:none;} 50%{opacity:1; text-shadow:0 0 30px var(--gold-glow);} }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15,10,6,0.85);
+            backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid transparent;
+            transition: all 0.4s;
+        }
+        nav.scrolled { border-bottom-color: var(--border); background: rgba(15,10,6,0.95); }
+        .nav-c {
+            max-width: 1300px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 72px;
+        }
+        .nav-brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.15; }
+        .nb-en { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); }
+        .nb-ar { font-family: 'Cairo'; font-size: 0.78rem; color: var(--gold-light); direction: rtl; opacity: 0.8; }
+        .nav-links { display: flex; align-items: center; gap: 0.2rem; }
+        .nav-links a {
+            color: var(--text); text-decoration: none; font-size: 0.82rem;
+            font-weight: 500; padding: 0.45rem 0.85rem; border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold); background: rgba(200,169,110,0.06); }
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+            color: var(--bg) !important; font-weight: 700 !important;
+            padding: 0.5rem 1.3rem !important; border-radius: 10px !important;
+        }
+        .nav-cta:hover { opacity: 0.9 !important; }
+        .nav-mob { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .nav-mob span { display: block; width: 22px; height: 2px; background: var(--gold); margin: 5px 0; border-radius: 2px; }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 8rem 2rem 6rem; position: relative; overflow: hidden;
+            background: url('images/dates-palm.jpg') center/cover no-repeat;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(15,10,6,0.92) 0%, rgba(15,10,6,0.75) 40%, rgba(15,10,6,0.92) 100%),
+                radial-gradient(ellipse at 30% 40%, rgba(200,169,110,0.08) 0%, transparent 60%);
+        }
+        .hero::after {
+            content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px;
+            background: linear-gradient(transparent, var(--bg));
+        }
+        .hero-c { max-width: 1300px; margin: 0 auto; width: 100%; position: relative; z-index: 2; text-align: center; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            border: 1px solid var(--border);
+            padding: 0.4rem 1.4rem; border-radius: 50px;
+            font-size: 0.72rem; color: var(--gold); letter-spacing: 3px;
+            text-transform: uppercase; margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800; color: var(--white);
+            line-height: 1.1; margin-bottom: 0.5rem;
+        }
+        .hero h1 .g { color: var(--gold); }
+        .hero-ar {
+            font-family: 'Cairo', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700; color: var(--gold-light);
+            direction: rtl; margin-bottom: 2rem; opacity: 0.85;
+        }
+        .hero-sub {
+            font-size: 1.1rem; color: var(--text);
+            max-width: 600px; margin: 0 auto 2.5rem; opacity: 0.8;
+        }
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-gold {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg); font-weight: 700; font-size: 0.95rem;
+            padding: 0.9rem 2.2rem; border-radius: 12px;
+            text-decoration: none; transition: all 0.3s;
+            box-shadow: 0 4px 20px var(--gold-glow);
+        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--gold-glow); }
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            border: 1px solid var(--border);
+            color: var(--gold); font-weight: 600; font-size: 0.95rem;
+            padding: 0.9rem 2.2rem; border-radius: 12px;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .btn-outline:hover { border-color: var(--gold); background: rgba(200,169,110,0.06); }
+
+        /* ===== TRUST BAR ===== */
+        .trust {
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(200,169,110,0.02), transparent 50%, rgba(200,169,110,0.02));
+        }
+        .trust-c {
+            max-width: 1100px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-around;
+            flex-wrap: wrap; gap: 2rem;
+        }
+        .trust-item { text-align: center; }
+        .trust-val {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 700; color: var(--gold);
+        }
+        .trust-lbl { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 6rem 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .sec-head { text-align: center; margin-bottom: 3.5rem; }
+        .sec-tag {
+            font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 0.8rem;
+        }
+        .sec-head h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700; color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+        .sec-head .h2ar {
+            font-family: 'Cairo'; font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+            color: var(--gold-light); direction: rtl; margin-bottom: 1rem;
+        }
+        .sec-head p { color: var(--text-muted); max-width: 550px; margin: 0 auto; font-size: 0.95rem; }
+        .sec-line { width: 50px; height: 2px; background: var(--gold); margin: 1rem auto 0; border-radius: 2px; }
+
+        /* ===== ABOUT ===== */
+        #about { background: var(--bg2); }
+        .about-g { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-visual {
+            border-radius: 20px; overflow: hidden; position: relative;
+            aspect-ratio: 4/5; max-height: 550px;
+        }
+        .about-visual img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 20px; transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+        }
+        .about-visual:hover img { transform: scale(1.03); }
+        .about-visual::after {
+            content: ''; position: absolute; inset: 0; border-radius: 20px;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, transparent 60%, rgba(15,10,6,0.4) 100%);
+            pointer-events: none;
+        }
+        .about-txt h3 { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--gold); margin-bottom:0.3rem; }
+        .about-txt .sar { font-family:'Cairo'; color:var(--gold-light); direction:rtl; margin-bottom:1.2rem; font-size:1.1rem; }
+        .about-txt p { color:var(--text); margin-bottom:1rem; font-size:0.95rem; }
+        .about-txt .quote {
+            font-style: italic; color: var(--gold-light); font-size: 1rem;
+            border-left: 3px solid var(--gold); padding-left: 1rem; margin: 1.5rem 0;
+        }
+        .about-txt .quote-ar {
+            font-family: 'Cairo'; direction: rtl; font-style: italic;
+            color: var(--gold-light); font-size: 1rem;
+            border-right: 3px solid var(--gold); padding-right: 1rem;
+            text-align: right; margin-top: 0.5rem;
+        }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .af {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.5rem; transition: all 0.3s;
+        }
+        .af:hover { border-color: var(--border-hover); }
+        .af-icon { font-size: 1.5rem; margin-bottom: 0.6rem; }
+        .af h4 { font-size: 0.9rem; color: var(--white); font-weight: 600; margin-bottom: 0.2rem; }
+        .af p { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* ===== PRODUCTS ===== */
+        .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .prod {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: var(--radius); overflow: hidden;
+            transition: all 0.4s; cursor: pointer;
+        }
+        .prod:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 20px 50px rgba(200,169,110,0.15); }
+        .prod-img {
+            height: 220px;
+            background: linear-gradient(145deg, rgba(200,169,110,0.05), rgba(139,105,20,0.08));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 5rem; position: relative;
+            background-size: cover; background-position: center;
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+            overflow: hidden;
+        }
+        .prod:hover .prod-img { transform: scale(1.05); }
+        .prod-img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(15,10,6,0.6) 100%);
+            pointer-events: none;
+        }
+        .prod-view {
+            position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%) translateY(8px);
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gold); background: rgba(15,10,6,0.7); backdrop-filter: blur(8px);
+            padding: 0.4rem 1.2rem; border-radius: 20px; border: 1px solid var(--border);
+            opacity: 0; transition: all 0.35s cubic-bezier(0.16,1,0.3,1); z-index: 3;
+        }
+        .prod:hover .prod-view { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .prod-tag {
+            position: absolute; top: 14px; right: 14px; z-index: 3;
+            font-size: 0.65rem; font-weight: 800; letter-spacing: 1px;
+            padding: 0.3rem 0.9rem; border-radius: 20px; text-transform: uppercase;
+        }
+        .t-prem { background: var(--gold); color: var(--bg); }
+        .t-pop { background: var(--green); color: white; }
+        .t-gift { background: #E65100; color: white; }
+        .t-new { background: #7B1FA2; color: white; }
+        .prod-body { padding: 1.5rem; }
+        .prod-body h3 { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--white); margin-bottom:0.15rem; }
+        .prod-body .par { font-family:'Cairo'; font-size:0.85rem; color:var(--gold-light); direction:rtl; margin-bottom:0.5rem; }
+        .prod-body p { font-size: 0.8rem; color: var(--text-muted); }
+        .prod-price {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 1rem; padding-top: 0.8rem;
+            border-top: 1px solid var(--border);
+        }
+        .prod-price .pp {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem; font-weight: 700; color: var(--gold);
+        }
+        .prod-price .order-btn {
+            font-size: 0.72rem; font-weight: 700;
+            color: var(--gold); border: 1px solid var(--border);
+            padding: 0.35rem 0.9rem; border-radius: 8px;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .prod-price .order-btn:hover { background: var(--gold); color: var(--bg); }
+
+        /* ===== WHY US ===== */
+        #why { background: var(--bg2); }
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .why-card {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem; text-align: center;
+            transition: all 0.3s;
+        }
+        .why-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+        .why-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .why-card h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); margin-bottom:0.3rem; }
+        .why-card .war { font-family:'Cairo'; font-size:0.85rem; color:var(--gold-light); direction:rtl; margin-bottom:0.6rem; }
+        .why-card p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* ===== GIFTING ===== */
+        .gift-banner {
+            background: linear-gradient(135deg, rgba(200,169,110,0.08), rgba(139,105,20,0.05));
+            border: 1px solid var(--border);
+            border-radius: 24px; padding: 4rem 3rem;
+            text-align: center; position: relative; overflow: hidden;
+        }
+        .gift-banner::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 50%, var(--gold-glow), transparent 70%);
+            opacity: 0.3;
+        }
+        .gift-banner > * { position: relative; z-index: 2; }
+        .gift-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; color: var(--white); margin-bottom: 0.3rem;
+        }
+        .gift-banner .gar { font-family:'Cairo'; font-size:1.5rem; color:var(--gold-light); direction:rtl; margin-bottom:1rem; }
+        .gift-banner p { font-size: 1rem; color: var(--text); max-width: 600px; margin: 0 auto 2rem; }
+        .gift-types { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .gift-type {
+            background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+            border-radius: 14px; padding: 1.2rem 1.8rem; text-align: center;
+            min-width: 150px;
+        }
+        .gift-type .gi { font-size: 2rem; margin-bottom: 0.4rem; }
+        .gift-type h4 { font-size: 0.85rem; color: var(--white); }
+        .gift-type p { font-size: 0.72rem; color: var(--text-muted); }
+
+        /* ===== CONTACT ===== */
+        #contact { background: var(--bg2); }
+        .contact-g { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+        .ct-info h3 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--gold); margin-bottom:0.2rem; }
+        .ct-info .ctar { font-family:'Cairo'; font-size:1.1rem; color:var(--gold-light); direction:rtl; margin-bottom:1.5rem; }
+        .ct-info p { color:var(--text-muted); font-size:0.92rem; margin-bottom:1rem; }
+        .ct-detail {
+            display: flex; gap: 0.8rem; align-items: center;
+            padding: 0.7rem 0; font-size: 0.9rem; color: var(--cream2);
+        }
+        .ct-detail span:first-child { font-size: 1.2rem; width: 28px; text-align: center; }
+        .ct-offer {
+            margin-top: 2rem; padding: 1.5rem;
+            background: rgba(200,169,110,0.05); border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .ct-offer h4 { font-family:'Playfair Display',serif; color:var(--gold); margin-bottom:0.6rem; }
+        .ct-offer p { font-size: 0.82rem; color: var(--text-muted); padding: 0.15rem 0; }
+
+        .ct-form {
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 2rem;
+        }
+        .fg { margin-bottom: 1.2rem; }
+        .fg label { display: block; font-size: 0.78rem; color: var(--gold-light); font-weight: 600; margin-bottom: 0.35rem; }
+        .fg input, .fg textarea, .fg select {
+            width: 100%; padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+            border-radius: 10px; color: var(--cream2);
+            font-family: inherit; font-size: 0.88rem; transition: all 0.2s;
+        }
+        .fg input:focus, .fg textarea:focus, .fg select:focus {
+            outline: none; border-color: var(--gold); background: rgba(200,169,110,0.04);
+        }
+        .fg textarea { resize: vertical; min-height: 110px; }
+        .fg select option { background: var(--bg); color: var(--cream2); }
+        .fr2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .f-submit {
+            width: 100%; padding: 0.85rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg); font-weight: 700; font-size: 0.95rem;
+            border: none; border-radius: 10px; cursor: pointer;
+            font-family: inherit; transition: all 0.3s;
+        }
+        .f-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+        .f-ok { display: none; text-align: center; padding: 2rem; }
+        .f-ok.show { display: block; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #080503; border-top: 1px solid var(--border);
+            padding: 3rem 2rem; text-align: center;
+        }
+        .ft-brand { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); }
+        .ft-ar { font-family:'Cairo'; font-size:0.9rem; color:var(--gold-light); direction:rtl; margin-bottom:0.5rem; }
+        footer p { font-size: 0.78rem; color: var(--text-muted); }
+        .ft-links { margin: 1rem 0; }
+        .ft-links a { color: var(--gold-light); text-decoration: none; font-size: 0.78rem; margin: 0 0.8rem; }
+        .ft-links a:hover { color: var(--gold); }
+        .ft-copy { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.7rem; color: var(--text-muted); opacity: 0.5; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .prod-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-g, .contact-g { grid-template-columns: 1fr; }
+            .about-features { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 72px; left: 0; right: 0;
+                background: rgba(15,10,6,0.98); padding: 1rem; border-bottom: 1px solid var(--border);
+            }
+            .nav-mob { display: block; }
+            .prod-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+            .why-grid { grid-template-columns: 1fr; }
+            .fr2 { grid-template-columns: 1fr; }
+            .trust-c { justify-content: center; }
+            .gift-types { flex-direction: column; align-items: center; }
+            section { padding: 4rem 1.2rem; }
+            .gift-banner { padding: 2.5rem 1.5rem; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fi { opacity: 0; transform: translateY(25px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+        .fi.v { opacity: 1; transform: translateY(0); }
+        /* Stagger children in grids */
+        .fi.v .prod:nth-child(1), .fi.v .why-card:nth-child(1), .fi.v .af:nth-child(1) { transition-delay: 0s; }
+        .fi.v .prod:nth-child(2), .fi.v .why-card:nth-child(2), .fi.v .af:nth-child(2) { transition-delay: 0.08s; }
+        .fi.v .prod:nth-child(3), .fi.v .why-card:nth-child(3), .fi.v .af:nth-child(3) { transition-delay: 0.16s; }
+        .fi.v .prod:nth-child(4), .fi.v .why-card:nth-child(4), .fi.v .af:nth-child(4) { transition-delay: 0.24s; }
+        .fi.v .prod:nth-child(5) { transition-delay: 0.32s; }
+        .fi.v .prod:nth-child(6) { transition-delay: 0.40s; }
+        .fi.v .prod:nth-child(7) { transition-delay: 0.48s; }
+        .fi.v .prod:nth-child(8) { transition-delay: 0.56s; }
+        .prod, .why-card, .af { opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color 0.3s, box-shadow 0.3s; }
+        .fi.v .prod, .fi.v .why-card, .fi.v .af { opacity: 1; transform: translateY(0); }
+
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            .fi, .prod, .why-card, .af { opacity: 1; transform: none; transition: none; }
+            .fi.v .prod, .fi.v .why-card, .fi.v .af { transition: none; }
+            .prod:hover { transform: none; }
+            .prod:hover .prod-img { transform: none; }
+            .loader { transition: none; }
+        }
+        /* ===== LANG TOGGLE ===== */
+        .lang-toggle {
+            display: flex; align-items: center; gap: 0.35rem;
+            border: 1px solid var(--border); border-radius: 50px;
+            padding: 0.3rem 0.8rem; text-decoration: none;
+            transition: all 0.3s; cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        .lang-toggle:hover { border-color: var(--gold); background: rgba(200,169,110,0.08); }
+        .lang-toggle span { font-size: 0.75rem; font-weight: 600; color: var(--gold); }
+
+        /* ===== PRODUCT MODAL ===== */
+        .pm-overlay {
+            position: fixed; inset: 0; z-index: 1000;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+            padding: 2rem;
+        }
+        .pm-overlay.open { opacity: 1; visibility: visible; }
+        .pm-overlay.open .pm-box { transform: translateY(0) scale(1); opacity: 1; }
+        .pm-box {
+            background: var(--bg2); border: 1px solid var(--border);
+            border-radius: 20px; max-width: 920px; width: 100%;
+            max-height: 90vh; overflow-y: auto;
+            transform: translateY(30px) scale(0.95); opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+            position: relative;
+        }
+        .pm-box::-webkit-scrollbar { width: 6px; }
+        .pm-box::-webkit-scrollbar-track { background: transparent; }
+        .pm-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        .pm-close {
+            position: absolute; top: 16px; right: 16px; z-index: 10;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            color: var(--gold); font-size: 1.2rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; line-height: 1;
+        }
+        .pm-close:hover { background: var(--gold); color: var(--bg); }
+        .pm-gallery {
+            position: relative; width: 100%; height: 400px;
+            border-radius: 20px 20px 0 0; overflow: hidden;
+            background: linear-gradient(145deg, rgba(200,169,110,0.06), rgba(139,105,20,0.1));
+        }
+        .pm-gallery img {
+            width: 100%; height: 100%; object-fit: cover;
+            position: absolute; inset: 0;
+            opacity: 0; transition: opacity 0.6s ease;
+        }
+        .pm-gallery img.active { opacity: 1; }
+        .pm-gallery-grad {
+            position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+            background: linear-gradient(transparent, var(--bg2));
+            z-index: 2;
+        }
+        .pm-dots {
+            position: absolute; bottom: 16px; left: 50%;
+            transform: translateX(-50%); display: flex; gap: 8px; z-index: 5;
+        }
+        .pm-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: rgba(255,255,255,0.3); border: none; cursor: pointer;
+            transition: all 0.25s; padding: 0;
+        }
+        .pm-dot.active { background: var(--gold); transform: scale(1.3); }
+        .pm-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.15);
+            color: white; font-size: 1.1rem; cursor: pointer; z-index: 5;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .pm-nav:hover { background: var(--gold); color: var(--bg); }
+        .pm-prev { left: 14px; }
+        .pm-next { right: 14px; }
+        .pm-content { padding: 2rem 2.5rem 2.5rem; }
+        .pm-tag-wrap { margin-bottom: 0.6rem; }
+        .pm-tag {
+            display: inline-block; font-size: 0.65rem; font-weight: 800;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            padding: 0.3rem 1rem; border-radius: 20px;
+        }
+        .pm-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem; font-weight: 800; color: var(--white);
+            margin-bottom: 0.15rem;
+        }
+        .pm-content .pm-ar {
+            font-family: 'Cairo'; font-size: 1.15rem; color: var(--gold-light);
+            direction: rtl; margin-bottom: 1rem;
+        }
+        .pm-desc {
+            color: var(--text); font-size: 0.95rem; line-height: 1.85;
+            margin-bottom: 1.5rem;
+        }
+        .pm-features {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+        .pm-feat {
+            display: flex; align-items: flex-start; gap: 0.6rem;
+            background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            border-radius: 10px; padding: 0.75rem 1rem;
+        }
+        .pm-feat-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.15rem; }
+        .pm-feat-txt h4 { font-size: 0.82rem; color: var(--white); font-weight: 600; margin-bottom: 0.1rem; }
+        .pm-feat-txt p { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+        .pm-bottom {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 1.2rem; border-top: 1px solid var(--border);
+        }
+        .pm-price-wrap {}
+        .pm-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; font-weight: 700; color: var(--gold);
+        }
+        .pm-price-note { font-size: 0.75rem; color: var(--text-muted); }
+        .pm-order {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--bg); font-weight: 700; font-size: 0.95rem;
+            padding: 0.8rem 2rem; border-radius: 12px; border: none;
+            cursor: pointer; transition: all 0.3s; font-family: inherit;
+            text-decoration: none;
+        }
+        .pm-order:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--gold-glow); }
+        @media (max-width: 768px) {
+            .pm-overlay { padding: 0.5rem; }
+            .pm-gallery { height: 260px; }
+            .pm-content { padding: 1.5rem; }
+            .pm-content h2 { font-size: 1.5rem; }
+            .pm-features { grid-template-columns: 1fr; }
+            .pm-bottom { flex-direction: column; gap: 1rem; align-items: stretch; text-align: center; }
+            .pm-order { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+    <div class="loader-en">House of Jabri for Dates</div>
+    <div class="loader-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+    <div class="nav-c">
+        <a href="#" class="nav-brand">
+            <span class="nb-en">House of Jabri for Dates</span>
+            <span class="nb-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610;</span>
+        </a>
+        <div class="nav-links" id="nl">
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#why">Why Us</a>
+            <a href="#gifting">Gifting</a>
+            <a href="#contact" class="nav-cta">Order Now</a>
+            <a href="index-ar.html" class="lang-toggle"><span>AR</span><span>العربية</span></a>
+        </div>
+        <button class="nav-mob" onclick="document.getElementById('nl').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-c">
+        <div class="hero-badge">PREMIUM JORDAN VALLEY DATES</div>
+        <h1>The <span class="g">House of Jabri</span> for Dates</h1>
+        <div class="hero-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+        <p class="hero-sub">Premium Medjool & Barhi dates from the Jordan Valley. Hand-selected, beautifully packaged, delivered to your door.</p>
+        <div class="hero-btns">
+            <a href="#products" class="btn-gold">Shop Our Collection &#8594;</a>
+            <a href="#contact" class="btn-outline">Contact Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+    <div class="trust-c">
+        <div class="trust-item"><div class="trust-val">100%</div><div class="trust-lbl">Jordanian Origin</div></div>
+        <div class="trust-item"><div class="trust-val">Premium</div><div class="trust-lbl">Hand-Selected Quality</div></div>
+        <div class="trust-item"><div class="trust-val">Fresh</div><div class="trust-lbl">Farm to Package</div></div>
+        <div class="trust-item"><div class="trust-val">Custom</div><div class="trust-lbl">Packaging & Gifting</div></div>
+        <div class="trust-item"><div class="trust-val">Wholesale</div><div class="trust-lbl">& Export Available</div></div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <div class="about-g fi">
+            <div class="about-visual">
+                <img src="images/dates-palm.jpg" alt="Date palm trees in Jordan Valley at golden hour" loading="lazy">
+            </div>
+            <div class="about-txt">
+                <h3>Our Story</h3>
+                <div class="sar">&#1602;&#1589;&#1578;&#1606;&#1575;</div>
+                <p>The House of Jabri for Dates is a premium Jordanian dates company born from a passion for quality and a deep connection to the Jordan Valley - home to the world's finest Medjool and Barhi dates.</p>
+                <p>We source directly from trusted farms, grade by hand, and package in-house with the care and craftsmanship your table deserves.</p>
+                <div class="quote">"From the heart of the Jordan Valley to your table."</div>
+                <div class="quote-ar">&#1605;&#1606; &#1602;&#1604;&#1576; &#1594;&#1608;&#1585; &#1575;&#1604;&#1571;&#1585;&#1583;&#1606; &#1573;&#1604;&#1609; &#1605;&#1575;&#1574;&#1583;&#1578;&#1603;&#1605;</div>
+            </div>
+            <div class="about-features">
+                <div class="af">
+                    <div class="af-icon">&#127796;</div>
+                    <h4>Jordan Valley Origin</h4>
+                    <p>Below-sea-level climate produces exceptional sweetness and size.</p>
+                </div>
+                <div class="af">
+                    <div class="af-icon">&#128230;</div>
+                    <h4>Custom Packaging</h4>
+                    <p>In-house carton manufacturing. Full brand control & luxury finish.</p>
+                </div>
+                <div class="af">
+                    <div class="af-icon">&#129309;</div>
+                    <h4>Direct Sourcing</h4>
+                    <p>No middlemen. Farm-to-package for guaranteed freshness & best price.</p>
+                </div>
+                <div class="af">
+                    <div class="af-icon">&#10024;</div>
+                    <h4>Hand Selected</h4>
+                    <p>Every date graded for size, softness, and appearance before packing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" style="background:var(--bg2);">
+    <div class="container">
+        <div class="sec-head fi">
+            <div class="sec-tag">OUR COLLECTION</div>
+            <h2>Premium Dates</h2>
+            <div class="h2ar">&#1578;&#1605;&#1608;&#1585;&#1606;&#1575; &#1575;&#1604;&#1601;&#1575;&#1582;&#1585;&#1577;</div>
+            <p>From whole premium Medjool to luxury gift boxes and chocolate-coated delights.</p>
+            <div class="sec-line"></div>
+        </div>
+        <div class="prod-grid fi">
+            <div class="prod" data-product="medjool-royal">
+                <div class="prod-img" style="background-image:url('images/medjool-royal.jpg')"><span class="prod-tag t-prem">PREMIUM</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Medjool Royal</h3>
+                    <div class="par">&#1605;&#1580;&#1607;&#1608;&#1604; &#1605;&#1604;&#1603;&#1610;</div>
+                    <p>Jumbo hand-selected Medjool. Soft, rich caramel sweetness. The crown jewel of dates.</p>
+                    <div class="prod-price"><span class="pp">JOD 12/kg</span><a href="#contact" class="order-btn">ORDER</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="medjool-select">
+                <div class="prod-img" style="background-image:url('images/medjool-select.jpg')"><span class="prod-tag t-prem">PREMIUM</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Medjool Select</h3>
+                    <div class="par">&#1605;&#1580;&#1607;&#1608;&#1604; &#1605;&#1605;&#1610;&#1586;</div>
+                    <p>Large premium Medjool dates. Perfect balance of sweetness and texture. Everyday luxury.</p>
+                    <div class="prod-price"><span class="pp">JOD 8/kg</span><a href="#contact" class="order-btn">ORDER</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="barhi-golden">
+                <div class="prod-img" style="background-image:url('images/barhi-golden.jpg')"><span class="prod-tag t-pop">POPULAR</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Barhi Golden</h3>
+                    <div class="par">&#1576;&#1585;&#1581;&#1610; &#1584;&#1607;&#1576;&#1610;</div>
+                    <p>Honey-sweet golden Barhi. Crunchy when fresh, meltingly soft when ripe. Gulf favorite.</p>
+                    <div class="prod-price"><span class="pp">JOD 5/kg</span><a href="#contact" class="order-btn">ORDER</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="gift-box">
+                <div class="prod-img" style="background-image:url('images/gift-box.jpg')"><span class="prod-tag t-gift">GIFT</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Luxury Gift Box</h3>
+                    <div class="par">&#1593;&#1604;&#1576;&#1577; &#1607;&#1583;&#1575;&#1610;&#1575; &#1601;&#1575;&#1582;&#1585;&#1577;</div>
+                    <p>Assorted premium dates in our signature luxury packaging. Ramadan, Eid, weddings, corporate.</p>
+                    <div class="prod-price"><span class="pp">JOD 25+</span><a href="#contact" class="order-btn">ORDER</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="chocolate-dates">
+                <div class="prod-img" style="background-image:url('images/chocolate-dates.jpg')"><span class="prod-tag t-new">NEW</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Chocolate Dates</h3>
+                    <div class="par">&#1578;&#1605;&#1608;&#1585; &#1576;&#1575;&#1604;&#1588;&#1608;&#1603;&#1608;&#1604;&#1575;&#1578;&#1577;</div>
+                    <p>Medjool dipped in Belgian dark, milk, or white chocolate. Irresistible indulgence.</p>
+                    <div class="prod-price"><span class="pp">JOD 15/box</span><a href="#contact" class="order-btn">ORDER</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="stuffed-dates">
+                <div class="prod-img" style="background-image:url('images/stuffed-dates.jpg')"><span class="prod-tag t-new">NEW</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Stuffed Dates</h3>
+                    <div class="par">&#1578;&#1605;&#1608;&#1585; &#1605;&#1581;&#1588;&#1610;&#1577;</div>
+                    <p>Medjool stuffed with almonds, walnuts, pistachios, or tahini. Nature's candy, elevated.</p>
+                    <div class="prod-price"><span class="pp">JOD 12/box</span><a href="#contact" class="order-btn">ORDER</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="wholesale">
+                <div class="prod-img" style="background-image:url('images/wholesale.jpg')"><span class="prod-tag t-pop">BULK</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Wholesale</h3>
+                    <div class="par">&#1576;&#1610;&#1593; &#1576;&#1575;&#1604;&#1580;&#1605;&#1604;&#1577;</div>
+                    <p>5kg, 10kg, and custom bulk orders. Perfect for retailers, restaurants, and resellers.</p>
+                    <div class="prod-price"><span class="pp">Custom</span><a href="#contact" class="order-btn">INQUIRE</a></div>
+                </div>
+            </div>
+            <div class="prod" data-product="export">
+                <div class="prod-img" style="background-image:url('images/export-boxes.jpg')"><span class="prod-tag t-gift">EXPORT</span><span class="prod-view">View Details</span></div>
+                <div class="prod-body">
+                    <h3>Export Orders</h3>
+                    <div class="par">&#1591;&#1604;&#1576;&#1575;&#1578; &#1578;&#1589;&#1583;&#1610;&#1585;</div>
+                    <p>Containerized export to Gulf, EU, and worldwide. Full documentation & compliance.</p>
+                    <div class="prod-price"><span class="pp">FOB/CIF</span><a href="#contact" class="order-btn">INQUIRE</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+    <div class="container">
+        <div class="sec-head fi">
+            <div class="sec-tag">WHY HOUSE OF JABRI</div>
+            <h2>Why Choose Us</h2>
+            <div class="h2ar">&#1604;&#1605;&#1575;&#1584;&#1575; &#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610;&#1567;</div>
+            <div class="sec-line"></div>
+        </div>
+        <div class="why-grid fi">
+            <div class="why-card">
+                <div class="why-icon">&#127796;</div>
+                <h3>World-Class Quality</h3>
+                <div class="war">&#1580;&#1608;&#1583;&#1577; &#1593;&#1575;&#1604;&#1605;&#1610;&#1577;</div>
+                <p>Jordan produces 14% of the world's Medjool dates. Our climate is among the best on earth for date cultivation.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#128230;</div>
+                <h3>Premium Packaging</h3>
+                <div class="war">&#1578;&#1594;&#1604;&#1610;&#1601; &#1601;&#1575;&#1582;&#1585;</div>
+                <p>In-house carton manufacturing means custom luxury packaging at competitive prices. Your brand, our craft.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#128176;</div>
+                <h3>Best Price Guarantee</h3>
+                <div class="war">&#1571;&#1601;&#1590;&#1604; &#1587;&#1593;&#1585;</div>
+                <p>Direct farm sourcing + in-house packaging = no middleman markup. Premium quality at honest prices.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#127873;</div>
+                <h3>Custom Orders</h3>
+                <div class="war">&#1591;&#1604;&#1576;&#1575;&#1578; &#1605;&#1582;&#1589;&#1589;&#1577;</div>
+                <p>Custom branding, packaging sizes, assortments, and private labeling available for all order sizes.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#10052;&#65039;</div>
+                <h3>Cold Chain</h3>
+                <div class="war">&#1587;&#1604;&#1587;&#1604;&#1577; &#1578;&#1576;&#1585;&#1610;&#1583;</div>
+                <p>Temperature-controlled storage and shipping ensures your dates arrive in perfect condition, every time.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#128666;</div>
+                <h3>Delivery & Export</h3>
+                <div class="war">&#1578;&#1608;&#1589;&#1610;&#1604; &#1608;&#1578;&#1589;&#1583;&#1610;&#1585;</div>
+                <p>Local delivery across Jordan. Export to Gulf, EU, and worldwide with full documentation support.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GIFTING -->
+<section id="gifting" style="background:var(--bg2);">
+    <div class="container">
+        <div class="gift-banner fi">
+            <h2>Corporate & Luxury Gifting</h2>
+            <div class="gar">&#1607;&#1583;&#1575;&#1610;&#1575; &#1601;&#1575;&#1582;&#1585;&#1577; &#1604;&#1604;&#1588;&#1585;&#1603;&#1575;&#1578; &#1608;&#1575;&#1604;&#1605;&#1606;&#1575;&#1587;&#1576;&#1575;&#1578;</div>
+            <p>Make every occasion unforgettable with premium Jordanian dates in bespoke luxury packaging. Custom branding available.</p>
+            <div class="gift-types">
+                <div class="gift-type"><div class="gi">&#127769;</div><h4>Ramadan</h4><p>&#1585;&#1605;&#1590;&#1575;&#1606;</p></div>
+                <div class="gift-type"><div class="gi">&#127881;</div><h4>Eid</h4><p>&#1575;&#1604;&#1593;&#1610;&#1583;</p></div>
+                <div class="gift-type"><div class="gi">&#128141;</div><h4>Weddings</h4><p>&#1571;&#1593;&#1585;&#1575;&#1587;</p></div>
+                <div class="gift-type"><div class="gi">&#127970;</div><h4>Corporate</h4><p>&#1607;&#1583;&#1575;&#1610;&#1575; &#1575;&#1604;&#1588;&#1585;&#1603;&#1575;&#1578;</p></div>
+                <div class="gift-type"><div class="gi">&#128354;</div><h4>VIP</h4><p>&#1590;&#1610;&#1575;&#1601;&#1577; &#1603;&#1576;&#1575;&#1585;</p></div>
+            </div>
+            <a href="#contact" class="btn-gold">Request Custom Quote &#8594;</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <div class="sec-head fi">
+            <div class="sec-tag">GET IN TOUCH</div>
+            <h2>Order & Inquiries</h2>
+            <div class="h2ar">&#1575;&#1591;&#1604;&#1576; &#1575;&#1604;&#1570;&#1606;</div>
+            <p>Ready to order? Have questions? We'd love to hear from you.</p>
+            <div class="sec-line"></div>
+        </div>
+        <div class="contact-g fi">
+            <div class="ct-info">
+                <h3>House of Jabri for Dates</h3>
+                <div class="ctar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+                <p>Whether you're looking for premium dates for your family, a stunning gift box for a special occasion, or a wholesale partner for your business - we're here to help.</p>
+                <div class="ct-detail"><span>&#128205;</span><span>Amman, Jordan / &#1593;&#1605;&#1575;&#1606;&#1548; &#1575;&#1604;&#1571;&#1585;&#1583;&#1606;</span></div>
+                <div class="ct-detail"><span>&#127796;</span><span>Sourced from Jordan Valley / &#1594;&#1608;&#1585; &#1575;&#1604;&#1571;&#1585;&#1583;&#1606;</span></div>
+
+                <div class="ct-offer">
+                    <h4>We Serve</h4>
+                    <p>&#127796; Retail customers & families</p>
+                    <p>&#127873; Corporate gifting & events</p>
+                    <p>&#127970; Hotels, restaurants & catering</p>
+                    <p>&#128722; Supermarkets & grocery stores</p>
+                    <p>&#128666; Distributors & export partners</p>
+                    <p>&#127851; Specialty & gourmet shops</p>
+                </div>
+            </div>
+            <div class="ct-form" id="ctForm">
+                <form id="theForm" onsubmit="sendForm(event)">
+                    <div class="fr2">
+                        <div class="fg"><label>Name / &#1575;&#1604;&#1575;&#1587;&#1605;</label><input type="text" name="name" required placeholder="Your full name"></div>
+                        <div class="fg"><label>Phone / &#1575;&#1604;&#1607;&#1575;&#1578;&#1601;</label><input type="tel" name="phone" placeholder="+962 7XX XXX XXX"></div>
+                    </div>
+                    <div class="fg"><label>Email / &#1575;&#1604;&#1576;&#1585;&#1610;&#1583;</label><input type="email" name="email" required placeholder="your@email.com"></div>
+                    <div class="fg">
+                        <label>I'm Interested In / &#1571;&#1606;&#1575; &#1605;&#1607;&#1578;&#1605; &#1576;</label>
+                        <select name="interest">
+                            <option value="retail">Retail Order / &#1591;&#1604;&#1576; &#1578;&#1580;&#1586;&#1574;&#1577;</option>
+                            <option value="wholesale">Wholesale / &#1576;&#1610;&#1593; &#1580;&#1605;&#1604;&#1577;</option>
+                            <option value="corporate">Corporate Gifts / &#1607;&#1583;&#1575;&#1610;&#1575;</option>
+                            <option value="export">Export / &#1578;&#1589;&#1583;&#1610;&#1585;</option>
+                            <option value="distribution">Distribution / &#1578;&#1608;&#1586;&#1610;&#1593;</option>
+                            <option value="custom">Custom Order / &#1591;&#1604;&#1576; &#1605;&#1582;&#1589;&#1589;</option>
+                            <option value="other">Other / &#1571;&#1582;&#1585;&#1609;</option>
+                        </select>
+                    </div>
+                    <div class="fg"><label>Message / &#1575;&#1604;&#1585;&#1587;&#1575;&#1604;&#1577;</label><textarea name="message" required placeholder="Tell us what you need - quantities, packaging, delivery..."></textarea></div>
+                    <button type="submit" class="f-submit">Send Message / &#1571;&#1585;&#1587;&#1604; &#8594;</button>
+                </form>
+                <div class="f-ok" id="fOk">
+                    <div style="font-size:3rem; margin-bottom:0.8rem;">&#9989;</div>
+                    <h3 style="font-family:'Playfair Display',serif; color:var(--gold); margin-bottom:0.3rem;">Message Sent!</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem;">Thank you! We'll respond within 24 hours.</p>
+                    <p style="font-family:'Cairo'; direction:rtl; color:var(--gold-light); margin-top:0.5rem;">&#1588;&#1603;&#1585;&#1575;&#1611; &#1604;&#1578;&#1608;&#1575;&#1589;&#1604;&#1603;. &#1587;&#1606;&#1585;&#1583; &#1582;&#1604;&#1575;&#1604; 24 &#1587;&#1575;&#1593;&#1577;.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="ft-brand">House of Jabri for Dates</div>
+    <div class="ft-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
+    <p>Premium Jordanian Dates | Amman, Jordan</p>
+    <div class="ft-links">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#why">Why Us</a>
+        <a href="#gifting">Gifting</a>
+        <a href="#contact">Contact</a>
+    </div>
+    <div class="ft-copy">&copy; 2026 House of Jabri for Dates | &#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;. All rights reserved.</div>
+</footer>
+
+<!-- Product Modal -->
+<div class="pm-overlay" id="pmOverlay">
+    <div class="pm-box">
+        <button class="pm-close" onclick="closeModal()">&times;</button>
+        <div class="pm-gallery" id="pmGallery">
+            <button class="pm-nav pm-prev" onclick="slideImg(-1)">&#8249;</button>
+            <button class="pm-nav pm-next" onclick="slideImg(1)">&#8250;</button>
+            <div class="pm-dots" id="pmDots"></div>
+            <div class="pm-gallery-grad"></div>
+        </div>
+        <div class="pm-content">
+            <div class="pm-tag-wrap"><span class="pm-tag" id="pmTag"></span></div>
+            <h2 id="pmTitle"></h2>
+            <div class="pm-ar" id="pmAr"></div>
+            <div class="pm-desc" id="pmDesc"></div>
+            <div class="pm-features" id="pmFeats"></div>
+            <div class="pm-bottom">
+                <div class="pm-price-wrap">
+                    <div class="pm-price" id="pmPrice"></div>
+                    <div class="pm-price-note" id="pmPriceNote"></div>
+                </div>
+                <a href="#contact" class="pm-order" onclick="closeModal()">Order Now &#8594;</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('done'), 600));
+
+document.querySelectorAll('.fi').forEach(el => {
+    new IntersectionObserver(ee => ee.forEach(e => { if(e.isIntersecting) e.target.classList.add('v'); }), {threshold:0.08}).observe(el);
+});
+
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', scrollY > 50));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+        document.getElementById('nl').classList.remove('open');
+    });
+});
+
+function sendForm(e) {
+    e.preventDefault();
+    e.target.style.display='none';
+    document.getElementById('fOk').classList.add('show');
+}
+
+/* ===== PRODUCT MODAL DATA ===== */
+const products = {
+    'medjool-royal': {
+        title: 'Medjool Royal',
+        ar: '\u0645\u062C\u0647\u0648\u0644 \u0645\u0644\u0643\u064A',
+        tag: 'PREMIUM', tagClass: 't-prem',
+        price: 'JOD 12/kg',
+        priceNote: 'Minimum order: 1 kg',
+        images: [
+            'images/medjool-royal.jpg',
+            'images/medjool-select.jpg',
+            'images/medjool-pile.jpg'
+        ],
+        desc: 'Our crown jewel. Medjool Royal dates are the largest, softest, and most luscious Medjool dates harvested from the Jordan Valley. Each date is hand-picked at peak ripeness and individually inspected for size (jumbo grade, 23g+ per date), skin quality, and texture. The result is an intensely sweet date with deep caramel and honey notes, a melt-in-your-mouth softness, and a glossy amber skin that speaks pure luxury.',
+        features: [
+            { icon: '\u{1F451}', title: 'Jumbo Grade', desc: '23g+ per date, largest size class available' },
+            { icon: '\u{1F33F}', title: '100% Jordan Valley', desc: 'Grown 400m below sea level for maximum sweetness' },
+            { icon: '\u{1F91A}', title: 'Hand-Inspected', desc: 'Each date individually checked for quality' },
+            { icon: '\u2744\uFE0F', title: 'Cold-Chain Fresh', desc: 'Temperature-controlled from farm to your door' }
+        ]
+    },
+    'medjool-select': {
+        title: 'Medjool Select',
+        ar: '\u0645\u062C\u0647\u0648\u0644 \u0645\u0645\u064A\u0632',
+        tag: 'PREMIUM', tagClass: 't-prem',
+        price: 'JOD 8/kg',
+        priceNote: 'Minimum order: 1 kg',
+        images: [
+            'images/medjool-select.jpg',
+            'images/medjool-royal.jpg',
+            'images/medjool-pile.jpg'
+        ],
+        desc: 'The everyday luxury Medjool. Our Select grade features large, premium dates (18-22g each) with the same rich caramel sweetness the Jordan Valley is famous for. These dates offer a perfect balance of sweetness, moisture, and chewiness \u2014 ideal for daily enjoyment, Ramadan iftar tables, and as a natural energy snack. The best value in premium Medjool without compromising on taste.',
+        features: [
+            { icon: '\u2B50', title: 'Large Grade', desc: '18-22g per date, consistently sized' },
+            { icon: '\u{1F36F}', title: 'Caramel Sweet', desc: 'Rich, natural caramel and toffee flavor' },
+            { icon: '\u{1F4B0}', title: 'Best Value', desc: 'Premium quality at an accessible price point' },
+            { icon: '\u{1F4E6}', title: 'Bulk Friendly', desc: 'Available in 1kg, 3kg, 5kg, and 10kg packs' }
+        ]
+    },
+    'barhi-golden': {
+        title: 'Barhi Golden',
+        ar: '\u0628\u0631\u062D\u064A \u0630\u0647\u0628\u064A',
+        tag: 'POPULAR', tagClass: 't-pop',
+        price: 'JOD 5/kg',
+        priceNote: 'Seasonal availability \u2014 order early',
+        images: [
+            'images/barhi-golden.jpg',
+            'images/barhi-ripe.jpg',
+            'images/dates-palm.jpg'
+        ],
+        desc: 'The golden gem of the Jordan Valley. Barhi dates are uniquely versatile \u2014 enjoyed crunchy and golden when fresh (khalal stage) with an apple-like sweetness, or soft and amber when fully ripe (rutab stage) with intense honey-butterscotch flavor. They are the #1 favorite in Gulf markets for their distinctive taste and beautiful golden color. A seasonal delicacy that sells out fast every year.',
+        features: [
+            { icon: '\u{1F31F}', title: 'Two Ways to Enjoy', desc: 'Crunchy fresh (khalal) or soft ripe (rutab)' },
+            { icon: '\u{1F36F}', title: 'Honey-Sweet', desc: 'Distinctive butterscotch and honey flavor' },
+            { icon: '\u{1F3C6}', title: 'Gulf Favorite', desc: '#1 selling variety in UAE, Saudi, Qatar markets' },
+            { icon: '\u{1F4C5}', title: 'Seasonal', desc: 'Limited harvest window \u2014 peak Aug-Oct' }
+        ]
+    },
+    'gift-box': {
+        title: 'Luxury Gift Box',
+        ar: '\u0639\u0644\u0628\u0629 \u0647\u062F\u0627\u064A\u0627 \u0641\u0627\u062E\u0631\u0629',
+        tag: 'GIFT', tagClass: 't-gift',
+        price: 'JOD 25+',
+        priceNote: 'Custom sizes from 500g to 5kg',
+        images: [
+            'images/gift-box.jpg',
+            'images/gift-ramadan.jpg',
+            'images/chocolate-dates.jpg'
+        ],
+        desc: 'Make every occasion unforgettable. Our luxury gift boxes are assembled by hand using our finest Medjool and Barhi dates, arranged in elegant custom packaging with gold foil accents, satin lining, and ribbon closure. Available in multiple sizes and configurations \u2014 from intimate 500g boxes for personal gifts to impressive 5kg presentation sets for corporate events. Custom branding and logo printing available for orders of 50+ boxes.',
+        features: [
+            { icon: '\u{1F381}', title: 'Bespoke Design', desc: 'Custom sizes, colors, and branding available' },
+            { icon: '\u{1F319}', title: 'Ramadan & Eid', desc: 'Themed packaging for Islamic occasions' },
+            { icon: '\u{1F48D}', title: 'Weddings & Events', desc: 'Elegant favors and table gifts' },
+            { icon: '\u{1F3E2}', title: 'Corporate Gifting', desc: 'Logo printing for 50+ box orders' }
+        ]
+    },
+    'chocolate-dates': {
+        title: 'Chocolate Dates',
+        ar: '\u062A\u0645\u0648\u0631 \u0628\u0627\u0644\u0634\u0648\u0643\u0648\u0644\u0627\u062A\u0629',
+        tag: 'NEW', tagClass: 't-new',
+        price: 'JOD 15/box',
+        priceNote: '500g box \u2014 approx. 18-20 pieces',
+        images: [
+            'images/chocolate-dates.jpg',
+            'images/chocolate-close.jpg',
+            'images/gift-box.jpg'
+        ],
+        desc: 'Where Jordan Valley Medjool meets Belgian chocolate. Each date is carefully pitted, then dipped in rich Belgian couverture chocolate \u2014 available in dark (70% cacao), milk, and white varieties. The contrast of the soft, caramel-sweet date with a crisp chocolate shell creates an irresistible indulgence. Finished with artisan toppings like crushed pistachios, rose petals, gold dust, or sea salt flakes. The perfect luxury confection.',
+        features: [
+            { icon: '\u{1F36B}', title: 'Belgian Chocolate', desc: 'Premium couverture: dark 70%, milk, or white' },
+            { icon: '\u2728', title: 'Artisan Toppings', desc: 'Pistachios, rose petals, gold dust, sea salt' },
+            { icon: '\u{1F381}', title: 'Gift Ready', desc: 'Presented in signature black & gold box' },
+            { icon: '\u2744\uFE0F', title: 'Chilled Shipping', desc: 'Cold-pack delivery to preserve chocolate shell' }
+        ]
+    },
+    'stuffed-dates': {
+        title: 'Stuffed Dates',
+        ar: '\u062A\u0645\u0648\u0631 \u0645\u062D\u0634\u064A\u0629',
+        tag: 'NEW', tagClass: 't-new',
+        price: 'JOD 12/box',
+        priceNote: '500g box \u2014 approx. 16-18 pieces',
+        images: [
+            'images/stuffed-dates.jpg',
+            'images/stuffed-variety.jpg',
+            'images/chocolate-close.jpg'
+        ],
+        desc: 'Nature\'s candy, elevated. Our premium Medjool dates are hand-pitted and generously filled with the finest whole nuts and spreads. Choose from roasted almonds for a satisfying crunch, caramelized walnuts for depth of flavor, vibrant green pistachios for color and taste, or silky tahini for a creamy Middle Eastern twist. Each variety is a perfect balance of the Medjool\'s natural caramel sweetness with the richness of the filling \u2014 a traditional delicacy perfected.',
+        features: [
+            { icon: '\u{1F95C}', title: 'Almond Stuffed', desc: 'Whole roasted almonds, classic and crunchy' },
+            { icon: '\u{1F330}', title: 'Walnut Stuffed', desc: 'Caramelized walnuts, rich and decadent' },
+            { icon: '\u{1F33F}', title: 'Pistachio Stuffed', desc: 'Vibrant green pistachios, colorful and flavorful' },
+            { icon: '\u{1FAD8}', title: 'Tahini Filled', desc: 'Silky sesame tahini, uniquely Middle Eastern' }
+        ]
+    },
+    'wholesale': {
+        title: 'Wholesale Orders',
+        ar: '\u0628\u064A\u0639 \u0628\u0627\u0644\u062C\u0645\u0644\u0629',
+        tag: 'BULK', tagClass: 't-pop',
+        price: 'Custom Pricing',
+        priceNote: 'Volume discounts starting at 50kg',
+        images: [
+            'images/wholesale.jpg',
+            'images/export-boxes.jpg',
+            'images/medjool-pile.jpg'
+        ],
+        desc: 'Partner with us for consistent, high-quality supply. We serve supermarkets, grocery chains, restaurants, hotels, catering companies, and specialty food retailers across Jordan and the region. Orders available in 5kg, 10kg, and custom bulk configurations. We offer competitive wholesale pricing with volume discounts, consistent quality grading, reliable year-round supply, and private labeling options. Our in-house packaging facility means we can deliver branded retail-ready packs for your shelves.',
+        features: [
+            { icon: '\u{1F4E6}', title: 'Flexible Sizes', desc: '5kg, 10kg cartons or custom packaging' },
+            { icon: '\u{1F3F7}\uFE0F', title: 'Private Label', desc: 'Your brand on our premium dates' },
+            { icon: '\u{1F4C9}', title: 'Volume Discounts', desc: 'Better pricing at higher quantities' },
+            { icon: '\u{1F504}', title: 'Year-Round Supply', desc: 'Cold storage ensures consistent availability' }
+        ]
+    },
+    'export': {
+        title: 'Export Orders',
+        ar: '\u0637\u0644\u0628\u0627\u062A \u062A\u0635\u062F\u064A\u0631',
+        tag: 'EXPORT', tagClass: 't-gift',
+        price: 'FOB / CIF',
+        priceNote: 'Minimum: 1 pallet (500kg)',
+        images: [
+            'images/export-boxes.jpg',
+            'images/wholesale.jpg',
+            'images/dates-palm.jpg'
+        ],
+        desc: 'Bring the best of Jordan to the world. We handle full-service export operations including containerized shipping (reefer containers for temperature control), complete export documentation (phytosanitary certificates, certificates of origin, commercial invoices), and customs clearance coordination. We currently export to Gulf states (UAE, Saudi, Qatar, Kuwait), European Union markets, and select Asian destinations. FOB Aqaba or CIF to your port \u2014 we handle the logistics so you can focus on selling.',
+        features: [
+            { icon: '\u{1F30D}', title: 'Global Reach', desc: 'Gulf, EU, Asia \u2014 growing network' },
+            { icon: '\u{1F4CB}', title: 'Full Documentation', desc: 'Phyto, COO, invoices, packing lists' },
+            { icon: '\u{1F69A}', title: 'Reefer Containers', desc: 'Temperature-controlled containerized shipping' },
+            { icon: '\u{1F91D}', title: 'Trade Terms', desc: 'FOB Aqaba or CIF to your port' }
+        ]
+    }
+};
+
+let currentSlide = 0;
+let currentImages = [];
+
+function openModal(productId) {
+    const p = products[productId];
+    if (!p) return;
+    currentImages = p.images;
+    currentSlide = 0;
+
+    // Fill gallery
+    const gallery = document.getElementById('pmGallery');
+    gallery.querySelectorAll('img').forEach(img => img.remove());
+    p.images.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = p.title;
+        img.loading = 'lazy';
+        if (i === 0) img.classList.add('active');
+        gallery.insertBefore(img, gallery.firstChild);
+    });
+
+    // Dots
+    const dots = document.getElementById('pmDots');
+    dots.innerHTML = '';
+    p.images.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'pm-dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => goToSlide(i);
+        dots.appendChild(d);
+    });
+
+    // Content
+    document.getElementById('pmTag').className = 'pm-tag ' + p.tagClass;
+    document.getElementById('pmTag').textContent = p.tag;
+    document.getElementById('pmTitle').textContent = p.title;
+    document.getElementById('pmAr').textContent = p.ar;
+    document.getElementById('pmDesc').textContent = p.desc;
+    document.getElementById('pmPrice').textContent = p.price;
+    document.getElementById('pmPriceNote').textContent = p.priceNote;
+
+    // Features
+    const feats = document.getElementById('pmFeats');
+    feats.innerHTML = '';
+    p.features.forEach(f => {
+        feats.innerHTML += `<div class="pm-feat">
+            <div class="pm-feat-icon">${f.icon}</div>
+            <div class="pm-feat-txt"><h4>${f.title}</h4><p>${f.desc}</p></div>
+        </div>`;
+    });
+
+    document.getElementById('pmOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('pmOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function goToSlide(n) {
+    currentSlide = n;
+    const imgs = document.querySelectorAll('#pmGallery img');
+    const dots = document.querySelectorAll('#pmDots .pm-dot');
+    imgs.forEach((img, i) => img.classList.toggle('active', i === (imgs.length - 1 - n)));
+    dots.forEach((d, i) => d.classList.toggle('active', i === n));
+}
+
+function slideImg(dir) {
+    let next = currentSlide + dir;
+    if (next < 0) next = currentImages.length - 1;
+    if (next >= currentImages.length) next = 0;
+    goToSlide(next);
+}
+
+// Click handlers for product cards
+document.querySelectorAll('.prod[data-product]').forEach(card => {
+    card.addEventListener('click', function(e) {
+        if (e.target.closest('.order-btn')) return; // let order links pass through
+        e.preventDefault();
+        openModal(this.dataset.product);
+    });
+});
+
+// Close on overlay click or Escape
+document.getElementById('pmOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+// Keyboard nav for gallery
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('pmOverlay').classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') slideImg(-1);
+    if (e.key === 'ArrowRight') slideImg(1);
+});
+</script>
+
+</body>
+</html>
