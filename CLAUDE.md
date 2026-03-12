@@ -53,7 +53,7 @@ Premium Jordanian dates business website and market study for Omar Jabri (OJ). B
 
 ## Key Decisions
 - **No privacy/terms needed** — B2B pitch site, no data collection, no e-commerce
-- **No email on site** — form is sufficient, ozjabri@gmail.com removed from all pages
+- **No email on site** — form is sufficient, owner email removed from all pages
 - **PDF generation** — uses Playwright Chromium with JS injection to force animations visible, remove backdrop-filter, fix nav positioning
 
 ## Products & Pricing (JOD)
