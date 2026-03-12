@@ -65,7 +65,9 @@
             display: flex; align-items: center; justify-content: space-between;
             height: 72px;
         }
-        .nav-brand { text-decoration: none; display: flex; flex-direction: column; line-height: 1.15; }
+        .nav-brand { text-decoration: none; display: flex; align-items: center; gap: 0.7rem; line-height: 1.15; }
+        .nav-brand img { height: 44px; width: auto; }
+        .nav-brand-txt { display: flex; flex-direction: column; }
         .nb-en { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--gold); }
         .nb-ar { font-family: 'Cairo'; font-size: 0.78rem; color: var(--gold-light); direction: rtl; opacity: 0.8; }
         .nav-links { display: flex; align-items: center; gap: 0.2rem; }
@@ -382,6 +384,7 @@
             background: #080503; border-top: 1px solid var(--border);
             padding: 3rem 2rem; text-align: center;
         }
+        .ft-logo { height: 60px; width: auto; margin-bottom: 0.8rem; }
         .ft-brand { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); }
         .ft-ar { font-family:'Cairo'; font-size:0.9rem; color:var(--gold-light); direction:rtl; margin-bottom:0.5rem; }
         footer p { font-size: 0.78rem; color: var(--text-muted); }
@@ -588,8 +591,11 @@
 <nav id="nav">
     <div class="nav-c">
         <a href="#" class="nav-brand">
-            <span class="nb-en">House of Jabri for Dates</span>
-            <span class="nb-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610;</span>
+            <img src="logo-icon.svg" alt="House of Jabri Logo">
+            <div class="nav-brand-txt">
+                <span class="nb-en">House of Jabri for Dates</span>
+                <span class="nb-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610;</span>
+            </div>
         </a>
         <div class="nav-links" id="nl">
             <a href="#about">About</a>
@@ -856,7 +862,7 @@
                 </div>
             </div>
             <div class="ct-form" id="ctForm">
-                <form id="theForm" onsubmit="sendForm(event)">
+                <form id="theForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="sendForm(event)">
                     <div class="fr2">
                         <div class="fg"><label>Name / &#1575;&#1604;&#1575;&#1587;&#1605;</label><input type="text" name="name" required placeholder="Your full name"></div>
                         <div class="fg"><label>Phone / &#1575;&#1604;&#1607;&#1575;&#1578;&#1601;</label><input type="tel" name="phone" placeholder="+962 7XX XXX XXX"></div>
@@ -890,6 +896,7 @@
 
 <!-- FOOTER -->
 <footer>
+    <img src="logo-icon.svg" alt="House of Jabri Logo" class="ft-logo">
     <div class="ft-brand">House of Jabri for Dates</div>
     <div class="ft-ar">&#1576;&#1610;&#1578; &#1580;&#1576;&#1585;&#1610; &#1604;&#1604;&#1578;&#1605;&#1608;&#1585;</div>
     <p>Premium Jordanian Dates | Amman, Jordan</p>
@@ -950,8 +957,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 function sendForm(e) {
     e.preventDefault();
-    e.target.style.display='none';
-    document.getElementById('fOk').classList.add('show');
+    const form = e.target;
+    const data = new FormData(form);
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+        .then(r => {
+            if (r.ok) {
+                form.style.display = 'none';
+                document.getElementById('fOk').classList.add('show');
+            } else { alert('Error sending message. Please try again.'); }
+        })
+        .catch(() => { alert('Network error. Please try again.'); });
 }
 
 /* ===== PRODUCT MODAL DATA ===== */
